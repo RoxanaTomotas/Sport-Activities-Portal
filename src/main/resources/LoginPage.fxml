@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginPageController">
+    <children>
+      <ImageView fitHeight="383.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@Image/images.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="298.0" fitWidth="427.0" layoutX="17.0" layoutY="77.0" pickOnBounds="true">
+         <image>
+            <Image url="@Image/athletic-clipart-sport-activity-24.png" />
+         </image>
+      </ImageView>
+        <Text fill="WHITE" fontSmoothingType="LCD" layoutX="154.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sport Activities Portal" wrappingWidth="351.1367492675781">
+            <font>
+                <Font name="Baskerville Old Face" size="38.0" />
+            </font>
+            <effect>
+                <Glow level="1.0" />
+            </effect></Text>
+        <VBox layoutX="446.0" layoutY="100.0" prefHeight="282.0" prefWidth="149.0">
+            <children>
+                <Label prefHeight="38.0" prefWidth="184.0" text="               Username" textFill="WHITE" />
+                <TextField fx:id="usernameField" prefHeight="26.0" prefWidth="138.0" />
+                <Label prefHeight="37.0" prefWidth="174.0" text="                Password" textFill="WHITE" />
+                <PasswordField fx:id="passwordField" />
+                <Label prefHeight="38.0" prefWidth="174.0" />
+                <ChoiceBox fx:id="choiceBox" prefHeight="31.0" prefWidth="174.0" />
+                <Label prefHeight="25.0" prefWidth="174.0" />
+                <Button fx:id="loginB" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="26.0" prefWidth="248.0" text="Login" />
+            </children></VBox>
+    </children>
+</AnchorPane>
