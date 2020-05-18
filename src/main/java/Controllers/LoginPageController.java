@@ -63,7 +63,7 @@ public class LoginPageController {
     public void setTrainerPage() throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("TrainerrPage.fxml"));
         Stage stage=new Stage();
-        stage.setTitle("TrainerPage");
+        stage.setTitle("Trainer");
         stage.setScene(new Scene(root, 600,400));
         stage.setFullScreen(true);
         stage.show();
@@ -72,7 +72,7 @@ public class LoginPageController {
     public void setAdministratorPage() throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AdministratorPage.fxml"));
         Stage stage=new Stage();
-        stage.setTitle("AdministratorPage");
+        stage.setTitle("Administrator");
         stage.setScene(new Scene(root, 600,400));
         stage.setFullScreen(true);
         stage.show();

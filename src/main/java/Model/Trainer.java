@@ -13,6 +13,7 @@ public class Trainer {
     protected String firstName; //First name of the trainer
     protected String lastName; //Last name of the trainer
     protected String email; //Trainer's email
+    protected String password; //Trainer's password
     protected String address; //Trainer's address
     protected String university; //Trainer's university
     protected List<Contract> contracts; //Trainer's contracts
@@ -22,14 +23,16 @@ public class Trainer {
         this.firstName = "";
         this.lastName = "";
         this.email = "";
+        this.password = "";
         this.address = "";
         this.university = "";
     }
 
-    Trainer(String firstName, String lastName, String email, String address, String university, List<Contract> contracts, List<Sport> sports) {
+    Trainer(String firstName, String lastName, String email, String password, String address, String university, List<Contract> contracts, List<Sport> sports) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
         this.address = address;
         this.university = university;
         if (this.contracts != null) {
@@ -44,6 +47,7 @@ public class Trainer {
         this.firstName = trainer.firstName;
         this.lastName = trainer.lastName;
         this.email = trainer.email;
+        this.password = trainer.password;
         this.address = trainer.address;
         this.university = trainer.university;
         if (this.contracts != null) {
@@ -108,5 +112,13 @@ public class Trainer {
 
     public void setSports(List<Sport> sports) {
         this.sports = sports;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -12,6 +12,8 @@ public class Participant {
 
     protected String firstName; //First name of the student
     protected String lastName; //Second name of the student
+    protected String email; //Student's email
+    protected String password; //Student's password
     protected String address; //The address of the student
     protected String university; //The university of the student
     protected String specialization; //Student's specialization
@@ -25,6 +27,8 @@ public class Participant {
         this.firstName = "";
         this.lastName = "";
         this.address = "";
+        this.email = "";
+        this.password ="";
         this.university = "";
         this.specialization = "";
         this.uniqueID = "";
@@ -32,9 +36,11 @@ public class Participant {
         this.healthAppropval = false;
     }
 
-    Participant(String firstName, String lastName, String address, String university, String specialization, String uniqueID, int studyYear, boolean healthAppropval, List<Application> applications, Contract contract) {
+    Participant(String firstName, String lastName, String address, String email, String password, String university, String specialization, String uniqueID, int studyYear, boolean healthAppropval, List<Application> applications, Contract contract) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
+        this.password = password;
         this.address = address;
         this.university = university;
         this.specialization = specialization;
@@ -51,6 +57,8 @@ public class Participant {
         this.firstName = participant.firstName;
         this.lastName = participant.lastName;
         this.address = participant.address;
+        this.email = participant.email;
+        this.password = participant.password;
         this.university = participant.university;
         this.specialization = participant.specialization;
         this.uniqueID = participant.uniqueID;
@@ -100,6 +108,22 @@ public class Participant {
 
     public String getSpecialization() {
         return specialization;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setSpecialization(String specialization) {
