@@ -12,7 +12,7 @@ public class Participant {
 
     protected String firstName; //First name of the student
     protected String lastName; //Second name of the student
-    protected String email; //Student's email
+    protected String username; //Student's username
     protected String password; //Student's password
     protected String address; //The address of the student
     protected String university; //The university of the student
@@ -27,7 +27,7 @@ public class Participant {
         this.firstName = "";
         this.lastName = "";
         this.address = "";
-        this.email = "";
+        this.username = "";
         this.password ="";
         this.university = "";
         this.specialization = "";
@@ -36,10 +36,10 @@ public class Participant {
         this.healthAppropval = false;
     }
 
-    Participant(String firstName, String lastName, String address, String email, String password, String university, String specialization, String uniqueID, int studyYear, boolean healthAppropval, List<Application> applications, Contract contract) {
+    public Participant(String firstName, String lastName, String address, String username, String password, String university, String specialization, String uniqueID, int studyYear, boolean healthAppropval, List<Application> applications, Contract contract) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.address = address;
         this.university = university;
@@ -57,7 +57,7 @@ public class Participant {
         this.firstName = participant.firstName;
         this.lastName = participant.lastName;
         this.address = participant.address;
-        this.email = participant.email;
+        this.username = participant.username;
         this.password = participant.password;
         this.university = participant.university;
         this.specialization = participant.specialization;
@@ -110,12 +110,12 @@ public class Participant {
         return specialization;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
