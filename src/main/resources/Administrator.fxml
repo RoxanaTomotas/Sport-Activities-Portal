@@ -3,78 +3,90 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator">
+<AnchorPane fx:id="Administrator" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdministratorPageController">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="Administrator" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Registration: Participants">
+          <Tab fx:id="tabRegistratinParticipants" text="Registration: Participants">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="697.0">
+              <AnchorPane fx:id="PaneParticipants" minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="697.0">
                      <children>
-                        <ImageView fitHeight="377.0" fitWidth="600.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image" fitHeight="377.0" fitWidth="600.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Image/Sport_14.jpg" />
                            </image>
                         </ImageView>
-                        <Label layoutX="335.0" layoutY="25.0" text="First Name:" />
-                        <Label layoutX="335.0" layoutY="55.0" text="Last Name:" />
-                        <Label layoutX="335.0" layoutY="85.0" text="Address:" />
-                        <Label layoutX="335.0" layoutY="115.0" text="Univerisity:" />
-                        <Label layoutX="335.0" layoutY="145.0" text="Specialization:" />
-                        <Label layoutX="335.0" layoutY="175.0" text="ID:" />
-                        <Label layoutX="335.0" layoutY="205.0" text="Specialization:" />
-                        <Label layoutX="335.0" layoutY="235.0" text="Year:" />
-                        <Label layoutX="335.0" layoutY="265.0" text="Health Approval:" />
-                        <Label layoutX="335.0" layoutY="295.0" text="Username:" />
-                        <Label layoutX="335.0" layoutY="325.0" text="Password:" />
-                        <TextField layoutX="430.0" layoutY="25.0" />
-                        <TextField layoutX="430.0" layoutY="55.0" />
-                        <TextField layoutX="430.0" layoutY="85.0" />
-                        <TextField layoutX="430.0" layoutY="115.0" />
-                        <TextField layoutX="430.0" layoutY="145.0" />
-                        <TextField layoutX="430.0" layoutY="175.0" />
-                        <TextField layoutX="430.0" layoutY="205.0" />
-                        <TextField layoutX="430.0" layoutY="235.0" />
-                        <TextField layoutX="430.0" layoutY="265.0" />
-                        <TextField layoutX="430.0" layoutY="295.0" />
-                        <TextField layoutX="430.0" layoutY="325.0" />
+                        <Label fx:id="fn" layoutX="335.0" layoutY="25.0" text="First Name:" />
+                        <Label fx:id="ln" layoutX="335.0" layoutY="55.0" text="Last Name:" />
+                        <Label fx:id="ad" layoutX="335.0" layoutY="85.0" text="Address:" />
+                        <Label fx:id="u" layoutX="335.0" layoutY="115.0" text="Univerisity:" />
+                        <Label fx:id="s" layoutX="335.0" layoutY="145.0" text="Specialization:" />
+                        <Label fx:id="id" layoutX="335.0" layoutY="175.0" text="ID:" />
+                        <Label fx:id="y" layoutX="335.0" layoutY="205.0" text="Year:" />
+                        <Label fx:id="ha" layoutX="335.0" layoutY="235.0" text="Health Approval:" />
+                        <Label fx:id="e" layoutX="335.0" layoutY="265.0" text="Username" />
+                        <Label fx:id="p" layoutX="335.0" layoutY="295.0" text="Password:" />
+                        <TextField fx:id="textFieldFirstName" layoutX="430.0" layoutY="25.0" />
+                        <TextField fx:id="textFieldLastName" layoutX="430.0" layoutY="55.0" />
+                        <TextField fx:id="textFieldAddress" layoutX="430.0" layoutY="85.0" />
+                        <TextField fx:id="textFieldUniversity" layoutX="430.0" layoutY="115.0" />
+                        <TextField fx:id="textFieldSpecialization" layoutX="430.0" layoutY="145.0" />
+                        <TextField fx:id="textFieldID" layoutX="430.0" layoutY="175.0" />
+                        <TextField fx:id="textFieldUsername" layoutX="430.0" layoutY="265.0" />
+                        <TextField fx:id="textFieldPassword" layoutX="430.0" layoutY="295.0" /> 
+                        <Button fx:id="button" layoutX="458.0" layoutY="328.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="94.0" text="Register" textFill="#0d0d0d">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                        <CheckBox fx:id="checkBoxMedicalApproval" layoutX="430.0" layoutY="239.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="149.0" text="Medical Approval" />
+                        <ChoiceBox fx:id="choiceBoxYear" layoutX="430.0" layoutY="210.0" prefWidth="150.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Registration: Trainers">
+          <Tab fx:id="tabRegistratinTrainers" text="Registration: Trainers">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane fx:id="PaneTrainers" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="379.0" fitWidth="626.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="textFieldLastNameTrainer" fitHeight="379.0" fitWidth="626.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Image/Sport_12.jpg" />
                            </image>
                         </ImageView>
-                         <Label layoutX="270.0" layoutY="85.0" text="First Name:" />
-                         <Label layoutX="270.0" layoutY="115.0" text="Last Name:" />
-                         <Label layoutX="270.0" layoutY="145.0" text="Address:" />
-                         <Label layoutX="270.0" layoutY="175.0" text="University:" />
-                         <Label layoutX="270.0" layoutY="205.0" text="Email:" />
-                         <Label layoutX="270.0" layoutY="235.0" text="Password:" />
-                         <TextField layoutX="345.0" layoutY="85.0" />
-                         <TextField layoutX="345.0" layoutY="115.0" />
-                         <TextField layoutX="345.0" layoutY="145.0" />
-                         <TextField layoutX="345.0" layoutY="175.0" />
-                         <TextField layoutX="345.0" layoutY="205.0" />
-                         <TextField layoutX="345.0" layoutY="235.0" />
+                         <Label fx:id="fn" layoutX="270.0" layoutY="85.0" text="First Name:" />
+                         <Label fx:id="ln" layoutX="270.0" layoutY="115.0" text="Last Name:" />
+                         <Label fx:id="add" layoutX="270.0" layoutY="145.0" text="Address:" />
+                         <Label fx:id="u" layoutX="270.0" layoutY="175.0" text="University:" />
+                         <Label fx:id="e" layoutX="270.0" layoutY="205.0" text="Username:" />
+                         <Label fx:id="p" layoutX="270.0" layoutY="235.0" text="Password:" />
+                         <TextField fx:id="textFieldFirstNameTrainer" layoutX="345.0" layoutY="85.0" />
+                         <TextField fx:id="textFieldLastNameTrainer" layoutX="345.0" layoutY="115.0" />
+                         <TextField fx:id="textFieldAddressTrainer" layoutX="345.0" layoutY="145.0" />
+                         <TextField fx:id="textFieldUniveristyTrainer" layoutX="345.0" layoutY="175.0" />
+                         <TextField fx:id="textFieldUsernameTrainer" layoutX="345.0" layoutY="205.0" />
+                         <TextField fx:id="textFieldPasswordTrainer" layoutX="345.0" layoutY="235.0" />
+                        <Button fx:id="buttonTrainerRegister" layoutX="345.0" layoutY="272.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="Button" />
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Contracts">
+            <Tab fx:id="tabContracts" text="Contracts">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane fx:id="PaneContracts" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="372.0" fitWidth="744.0" layoutX="-63.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image" fitHeight="299.0" fitWidth="786.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Image/Sport_15.jpg" />
+                              <Image url="@Image/Sport_17.jpg" />
                            </image>
                         </ImageView>
+                        <ImageView fitHeight="304.0" fitWidth="607.0" layoutX="-3.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/Sport_17.jpg" />
+                           </image>
+                        </ImageView>
+                        <ListView fx:id="ListViewContracts" layoutX="-3.0" layoutY="41.0" prefHeight="219.0" prefWidth="608.0" />
+                        <ScrollBar fx:id="scrollBarContracts" layoutX="586.0" layoutY="43.0" orientation="VERTICAL" prefHeight="216.0" prefWidth="14.0" />
                      </children></AnchorPane>
               </content>
             </Tab>

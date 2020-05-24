@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
+
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -16,7 +17,7 @@ public class Main extends Application {
       //  UserService.loadUsersFromFile();
 
         Parent root= FXMLLoader.load((getClass().getClassLoader().getResource("LoginPage.fxml")));
-        primaryStage.setTitle("Registration Example");
+        primaryStage.setTitle("Registration");
         primaryStage.setScene(new Scene(root, 600,400));
         primaryStage.setResizable(false);
         primaryStage.show();

@@ -12,7 +12,7 @@ public class Trainer {
 
     protected String firstName; //First name of the trainer
     protected String lastName; //Last name of the trainer
-    protected String email; //Trainer's email
+    protected String username; //Trainer's username
     protected String password; //Trainer's password
     protected String address; //Trainer's address
     protected String university; //Trainer's university
@@ -22,16 +22,16 @@ public class Trainer {
     Trainer() {
         this.firstName = "";
         this.lastName = "";
-        this.email = "";
+        this.username = "";
         this.password = "";
         this.address = "";
         this.university = "";
     }
 
-    Trainer(String firstName, String lastName, String email, String password, String address, String university, List<Contract> contracts, List<Sport> sports) {
+    public Trainer(String firstName, String lastName, String username, String password, String address, String university, List<Contract> contracts, List<Sport> sports) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.address = address;
         this.university = university;
@@ -46,7 +46,7 @@ public class Trainer {
     Trainer(Trainer trainer) {
         this.firstName = trainer.firstName;
         this.lastName = trainer.lastName;
-        this.email = trainer.email;
+        this.username = trainer.username;
         this.password = trainer.password;
         this.address = trainer.address;
         this.university = trainer.university;
@@ -66,8 +66,8 @@ public class Trainer {
         return lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
     public String getAddress() {
@@ -94,8 +94,8 @@ public class Trainer {
         this.lastName = lastName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setAddress(String address) {
