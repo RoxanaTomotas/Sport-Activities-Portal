@@ -1,17 +1,15 @@
 [
   {
-    "username" : "admin",
-    "password" : "admin",
-    "role" : "administrator"
-  },
-  {
-    "username" : "lidia",
-    "password" : "lidia",
-    "role" : "participant"
-  },
-  {
-    "username" : "roxana",
-    "password" : "roxana",
-    "role" : "trainer"
+    "firstName": "lidia-MARIANA",
+    "lastName": "szmecskas",
+    "username": "lidiaMARIANA.szm",
+    "password":  "lidiaMARIANA",
+    "address": "Livezilor",
+    "university": "UPT",
+    "contracts": [],
+    "sports": [],
+    "dates": []
   }
 ]
+
+

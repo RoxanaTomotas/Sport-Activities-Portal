@@ -18,6 +18,7 @@ public class Trainer {
     protected String university; //Trainer's university
     protected List<Contract> contracts; //Trainer's contracts
     protected List<Sport> sports; //Trainer's assigned sports
+    protected List<Date> dates;
 
     Trainer() {
         this.firstName = "";
@@ -28,7 +29,7 @@ public class Trainer {
         this.university = "";
     }
 
-    public Trainer(String firstName, String lastName, String username, String password, String address, String university, List<Contract> contracts, List<Sport> sports) {
+    public Trainer(String firstName, String lastName, String username, String password, String address, String university, List<Contract> contracts, List<Sport> sports, List<Date> dates) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -40,6 +41,9 @@ public class Trainer {
         }
         if (this.sports != null) {
             this.sports.addAll(sports);
+        }
+        if (this.dates != null) {
+            this.dates.addAll(dates);
         }
     }
 
@@ -55,6 +59,9 @@ public class Trainer {
         }
         if (this.sports != null) {
             this.sports.addAll(trainer.sports);
+        }
+        if (this.dates != null) {
+            this.dates.addAll(trainer.dates);
         }
     }
 
@@ -86,6 +93,10 @@ public class Trainer {
         return sports;
     }
 
+    public List<Date> getDates() {
+        return dates;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -112,6 +123,10 @@ public class Trainer {
 
     public void setSports(List<Sport> sports) {
         this.sports = sports;
+    }
+
+    public void setDates(List<Date> dates) {
+        this.dates = dates;
     }
 
     public String getPassword() {

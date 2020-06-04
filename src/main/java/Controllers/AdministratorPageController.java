@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javax.swing.*;
 import java.util.Objects;
+import Services.SportService;
 
 public class AdministratorPageController {
 
@@ -73,7 +74,7 @@ public class AdministratorPageController {
                     textFieldUniversity.getText(),
                     textFieldSpecialization.getText(),
                     textFieldID.getText(),
-                    (Integer) choiceBoxYear.getValue(),
+                    (String) choiceBoxYear.getValue(),
                     healtApprovalLocal,
                     null,
                     null);

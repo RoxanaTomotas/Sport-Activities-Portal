@@ -18,7 +18,7 @@ public class Participant {
     protected String university; //The university of the student
     protected String specialization; //Student's specialization
     protected String uniqueID; //Student's unique ID
-    protected int studyYear; //The student's study year
+    protected String studyYear; //The student's study year
     protected boolean healthAppropval; //Healt approval: 1 - apt, 0 -  is not apt
     protected List<Application> applications; //The list of the student's applications
     protected Contract contract; //The student's unique contract
@@ -32,11 +32,11 @@ public class Participant {
         this.university = "";
         this.specialization = "";
         this.uniqueID = "";
-        this.studyYear = 0;
+        this.studyYear = "";
         this.healthAppropval = false;
     }
 
-    public Participant(String firstName, String lastName, String address, String username, String password, String university, String specialization, String uniqueID, int studyYear, boolean healthAppropval, List<Application> applications, Contract contract) {
+    public Participant(String firstName, String lastName, String address, String username, String password, String university, String specialization, String uniqueID, String studyYear, boolean healthAppropval, List<Application> applications, Contract contract) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -90,7 +90,7 @@ public class Participant {
         return uniqueID;
     }
 
-    public int getStudyYear() {
+    public String getStudyYear() {
         return studyYear;
     }
 
@@ -150,7 +150,7 @@ public class Participant {
         this.uniqueID = uniqueID;
     }
 
-    public void setStudyYear(int studyYear) {
+    public void setStudyYear(String studyYear) {
         this.studyYear = studyYear;
     }
 

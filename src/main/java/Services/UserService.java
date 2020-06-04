@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,14 +28,23 @@ public class UserService {
     /*List of participants*/
     private static List<Participant> participants;
 
+    static {
+        participants=new ArrayList<Participant>();
+    }
+
     /*List of trainers*/
     private static List<Trainer> trainers;
+
+    static {
+        trainers=new ArrayList<Trainer>();
+    }
 
     /*Path for participants: participants_PATH*/
     private static final Path participants_PATH = FileSystemService.getPathToFile("config", "participants.json");
     
     /*Path for trainers: trainers_PATH*/
     private static final Path trainers_PATH = FileSystemService.getPathToFile("config", "trainers.json");
+    int sw;
 
     
     /*********************************************************************************************
@@ -72,7 +82,7 @@ public class UserService {
     *   This method adds the participant.
     *
     * **********************************************/
-    public static void addParticipant(String firstName, String lastName, String address, String username, String password, String university, String specialization, String uniqueID, int studyYear, boolean healthAppropval, List<Application> applications, Contract contract)throws Exception {
+    public static void addParticipant(String firstName, String lastName, String address, String username, String password, String university, String specialization, String uniqueID, String studyYear, boolean healthAppropval, List<Application> applications, Contract contract)throws Exception {
 
         checkEmptyField(username,password);
         checkUsernameAlreadyExist(username);
@@ -90,7 +100,7 @@ public class UserService {
 
         checkEmptyField(username,password);
         checkUsernameAlreadyExist(username);
-        trainers.add(new Trainer(firstName, lastName,  username,   encodePassword(username, password),  address,  university, null,null));
+        trainers.add(new Trainer(firstName, lastName,  username,   encodePassword(username, password),  address,  university, null,null,null));
         persistTrainers();
     }
  
@@ -142,10 +152,12 @@ public class UserService {
     private static void checkUsernameAlreadyExist(String username) throws Exception {
 
         /*Participants' usernames are checked.*/
-        for (Participant participant : participants) {
+     /*   for (Participant participant : participants) {
+            System.out.println("Faci?");
             if (Objects.equals(username, participant.getUsername()))
                 throw new CouldNotWriteUsersException();//change exception
-        }
+        }*/
+        System.out.println("Faci2?");
         /*Trainers' usernames are checked.*/
         for (Trainer trainer : trainers) {
             if (Objects.equals(username, trainer.getUsername()))
@@ -170,13 +182,7 @@ public class UserService {
      *  This method checks if the login credentials are correct.
      *
      * ********************************************************/
-    public static void checkLoginCredentials(String username,String password) throws IncorrectLoginData {
-
-//      try {
-//          loadUsersFromFile();
-//      } catch (IOException e) {
-//          e.printStackTrace();
-//      }
+    public static void checkLoginCredentials(String username,String password, String role) throws IncorrectLoginData {
 
 //      System.out.println("aaaaaaaaaa 1");
 //        String encodePassword = encodePassword(username, password);
@@ -205,6 +211,31 @@ public class UserService {
 //
 //        /*The inexistance of the username and password leads to an exception.*/
 //        if(correct==0) throw new IncorrectLoginData();
+        int sw=0;
+        if(role.equals("Trainer")) {
+            for (Trainer trainer : trainers) {
+                if (Objects.equals(username, trainer.getUsername())) {
+                    sw=1;
+                    if (!Objects.equals(password, trainer.getPassword()))
+                        throw new IncorrectLoginData();
+                }
+            }
+            if(sw==0) //n-am gassit user ul
+                throw new IncorrectLoginData();
+        }
+        else
+        if(role.equals("Participant")) {
+            for (Participant participant : participants) {
+                if (Objects.equals(username, participant.getUsername())) {
+                    sw=1;
+                    if (!Objects.equals(password, participant.getPassword()))
+                        throw new IncorrectLoginData();
+                }
+            }
+            if(sw==0) //n-am gassit user ul
+                throw new IncorrectLoginData();
+        }
+
     }
 
 

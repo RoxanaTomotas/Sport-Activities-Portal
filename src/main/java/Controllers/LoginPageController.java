@@ -42,29 +42,33 @@ public class LoginPageController {
         try {
             System.out.println("Yeeee 2");
 
-            UserService.checkLoginCredentials(usernameField.getText(),passwordField.getText());
+            UserService.checkLoginCredentials(usernameField.getText(),passwordField.getText(),choiceBox.getValue().toString());
 
             Stage stage = (Stage) loginB.getScene().getWindow();
             System.out.println("Yeeee 3");
             stage.close();
             System.out.println("Yeeee 4");
 
-            if(Objects.equals(choiceBox.toString(),"Admin")) {
+            if(((String)choiceBox.getValue()).equals("Admin")) {
                 setAdministratorPage();
                 System.out.println("Yeeee 5");
             }
             else
-                if(Objects.equals(choiceBox.toString(),"Trainer"))
-                    setTrainerPage();
-                else
-                    setParticipantPage();
+            if(((String)choiceBox.getValue()).equals("Trainer"))
+                setTrainerPage();
+            else {
+                System.out.println("Yeeee participant");
+                setParticipantPage();
+            }
         } catch (Exception e) {
-            text.setText(e.getMessage());
+    //          text.setText(e.getMessage());
         }
     }
 
     public void setParticipantPage() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("ParticipantPage.fxml")));
+        System.out.println("Yeeee participant 1");
+        Parent root= FXMLLoader.load((getClass().getClassLoader().getResource("Participant.fxml")));
+        System.out.println("Yeeee participant 222");
         Stage stage=new Stage();
         stage.setTitle("ParticipantPage");
         stage.setScene(new Scene(root, 600,400));
@@ -73,7 +77,7 @@ public class LoginPageController {
     }
 
     public void setTrainerPage() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("TrainerPage.fxml")));
+        Parent root= FXMLLoader.load((getClass().getClassLoader().getResource("Trainer.fxml")));
         Stage stage=new Stage();
         stage.setTitle("Trainer");
         stage.setScene(new Scene(root, 600,400));
@@ -83,8 +87,8 @@ public class LoginPageController {
 
     public void setAdministratorPage() throws IOException {
         System.out.println("Yeeee 6");
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/Administrator.fxml")));
-
+        Parent root= FXMLLoader.load((getClass().getClassLoader().getResource("Administrator.fxml")));
+        System.out.println("Yeeee 100");
         Stage stage = new Stage();
         stage.setTitle("Administrator");
         stage.setScene(new Scene(root, 600, 400));
@@ -92,7 +96,4 @@ public class LoginPageController {
         stage.showAndWait();
     }
 
-    public void onLogin(ActionEvent actionEvent) {
-        System.out.println("Yeeee");
-    }
 }

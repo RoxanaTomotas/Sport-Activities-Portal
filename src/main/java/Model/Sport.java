@@ -14,19 +14,22 @@ public class Sport {
     protected String description; //The description of the sport
     protected List<Date> dates; //The sport's available dates
     protected List<Trainer> trainers; //The sport's trainers
+    protected String image;
 
     public Sport() {
         this.name = "";
         this.description = "";
         this.dates = null;
         this.trainers = null;
+        this.image="";
     }
 
-    public Sport(String name, String description, List<Date> dates, List<Trainer> trainers) {
+    public Sport(String name, String description, List<Date> dates, List<Trainer> trainers, String image) {
         this.name = name;
         this.description = description;
         this.dates = dates;
         this.trainers = trainers;
+        this.image=image;
     }
 
     public Sport(Sport sport) {
@@ -52,6 +55,8 @@ public class Sport {
         return trainers;
     }
 
+    public String getImage() { return image; }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -66,5 +71,18 @@ public class Sport {
 
     public void setTrainers(List<Trainer> trainers) {
         this.trainers = trainers;
+    }
+
+    public void setImage(String image) { this.image = image; }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", dates='" + dates + '\'' +
+                ", image='" + image + '\'' +
+                ", trainers=" + trainers +
+                '}';
     }
 }
