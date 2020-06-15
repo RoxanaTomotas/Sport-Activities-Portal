@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ListTrainersController">
+   <children>
+      <ImageView fitHeight="482.0" fitWidth="671.0" layoutX="-69.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/list_of_trainers.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="334.0" fitWidth="228.0" layoutX="33.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/basket20.gif" />
+         </image>
+      </ImageView>
+      <ChoiceBox fx:id="trainers" layoutX="346.0" layoutY="125.0" prefHeight="26.0" prefWidth="162.0" />
+      <ChoiceBox fx:id="date" layoutX="343.0" layoutY="201.0" prefHeight="26.0" prefWidth="162.0" />
+      <Button fx:id="createContract" layoutX="351.0" layoutY="276.0" mnemonicParsing="false"  prefHeight="59.0" prefWidth="154.0" text="Create an application" />
+   </children>
+</AnchorPane>

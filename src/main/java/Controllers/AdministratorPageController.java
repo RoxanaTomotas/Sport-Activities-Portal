@@ -1,16 +1,8 @@
 package Controllers;
 
-import Model.Application;
-import Model.Contract;
-import Model.Sport;
 import Services.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javax.swing.*;
-import java.util.Objects;
-import Services.SportService;
 
 public class AdministratorPageController {
 

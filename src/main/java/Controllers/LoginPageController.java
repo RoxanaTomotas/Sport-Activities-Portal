@@ -50,6 +50,7 @@ public class LoginPageController {
             System.out.println("Yeeee 4");
 
             if(((String)choiceBox.getValue()).equals("Admin")) {
+                // if username si password=admin
                 setAdministratorPage();
                 System.out.println("Yeeee 5");
             }

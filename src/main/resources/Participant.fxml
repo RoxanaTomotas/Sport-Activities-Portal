@@ -14,43 +14,90 @@
       </ImageView>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="See applications">
+          <Tab text="Check sports">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="214.0" prefWidth="303.0">
                      <children>
-                        <TilePane layoutX="57.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0">
+                        <TilePane layoutX="-4.0" layoutY="6.0" prefHeight="400.0" prefWidth="800.0" AnchorPane.topAnchor="6.0">
                            <children>
-                              <Button fx:id="Fitness" mnemonicParsing="false" onAction="#goToFitness" prefHeight="175.0" prefWidth="202.0" text="Button" />
+                              <Button fx:id="Fitness" mnemonicParsing="false" onAction="#goToFitness" prefHeight="170.0" prefWidth="170.0">
+                                 <TilePane.margin>
+                                    <Insets left="26.0" />
+                                 </TilePane.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="160.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Image/Fitness-p.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0">
+                                 <TilePane.margin>
+                                    <Insets left="13.0" />
+                                 </TilePane.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="160.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Image/Swim-p.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0">
+                                 <opaqueInsets>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </opaqueInsets>
+                                 <TilePane.margin>
+                                    <Insets bottom="2.0" left="12.0" right="12.0" top="4.0" />
+                                 </TilePane.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="160.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Image/Football-p.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0">
+                                 <TilePane.margin>
+                                    <Insets left="26.0" />
+                                 </TilePane.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="160.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Image/Culturism-p.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0">
+                                 <TilePane.margin>
+                                    <Insets left="13.0" />
+                                 </TilePane.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="160.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Image/Aerobic-p.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0">
+                                 <graphic>
+                                    <ImageView fitHeight="160.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Image/Jogging-p.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
                            </children>
                         </TilePane>
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Check Sports">
+          <Tab text="See applications">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TilePane layoutX="25.0" layoutY="21.0" prefHeight="331.0" prefWidth="553.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="165.0" prefWidth="180.0" text="Button">
-                                 <padding>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </padding>
-                              </Button>
-                              <Button fx:id="buttonFitness" mnemonicParsing="false" onAction="#goToFitness" prefHeight="167.0" prefWidth="181.0">
-                                 <graphic>
-                                    <ImageView fitHeight="171.0" fitWidth="307.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@Image/Fitness-p.jpg" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="173.0" text="Button" />
-                              <Button mnemonicParsing="false" text="Button" />
-                           </children>
-                        </TilePane>
-                     </children></AnchorPane>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
         </tabs>

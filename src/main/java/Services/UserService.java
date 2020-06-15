@@ -1,5 +1,6 @@
 package Services;
 
+import Controllers.ListTrainersController;
 import Exceptions.CouldNotWriteUsersException;
 import Exceptions.EmptyFieldException;
 import Exceptions.IncorrectLoginData;
@@ -45,6 +46,7 @@ public class UserService {
     /*Path for trainers: trainers_PATH*/
     private static final Path trainers_PATH = FileSystemService.getPathToFile("config", "trainers.json");
     int sw;
+    private static ListTrainersController ltc;
 
     
     /*********************************************************************************************
@@ -183,34 +185,6 @@ public class UserService {
      *
      * ********************************************************/
     public static void checkLoginCredentials(String username,String password, String role) throws IncorrectLoginData {
-
-//      System.out.println("aaaaaaaaaa 1");
-//        String encodePassword = encodePassword(username, password);
-//        System.out.println("aaaaaaaaaa 2");
-//        /*The participants' usernames and passwords are checked*/
-//        int correct=0;
-//        System.out.println("aaaaaaaaaa 3");
-//        for (Participant participant : participants) {
-//            System.out.println("aaaaaaaaaa 4");
-//            if (Objects.equals(username, participant.getUsername())) {
-//                correct=1;
-//                System.out.println("aaaaaaaaaa 5");
-//                if (!Objects.equals(encodePassword, participant.getPassword()))
-//                    throw new IncorrectLoginData();
-//            }
-//        }
-//        System.out.println("aaaaaaaaaa 6");
-//        /*The trainers' usernames and passwords are checked*/
-//        for (Trainer trainer : trainers) {
-//            if (Objects.equals(username, trainer.getUsername())) {
-//                correct=1;
-//                if (!Objects.equals(encodePassword, trainer.getPassword()))
-//                    throw new IncorrectLoginData();
-//            }
-//        }
-//
-//        /*The inexistance of the username and password leads to an exception.*/
-//        if(correct==0) throw new IncorrectLoginData();
         int sw=0;
         if(role.equals("Trainer")) {
             for (Trainer trainer : trainers) {
@@ -270,4 +244,25 @@ public class UserService {
         return md;
     }
 
+    public static void setTrainers(String sport) {
+            for (Trainer trainer : trainers) {
+                if(trainer.getSports().contains(sport))
+                     ltc.getTrainer().getItems().add(trainer.getFirstName());
+            }
+        }
+    public static void setDate(String name_trainer) {
+        for (Trainer trainer : trainers) {
+            if(name_trainer.equals(trainer.getFirstName())) {
+                String date="";
+                for(Date date1:trainer.getDates() ) {
+                    date = date1.getDay() + "-" + date1.getStartHour() + ":" + date1.getStartMinute() + "-" + date1.getEndHour() + ":" + date1.getEndMinute();
+                    ltc.getDate().getItems().add(date);
+                    date = "";
+                }
+            }
+        }
+    }
+    public static void injecltc(ListTrainersController u) {
+        ltc= u;
+    }
 }
