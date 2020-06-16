@@ -1,3 +1,4 @@
+import Services.ApplicationService;
 import Services.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         UserService.loadUsersFromFile();
+        ApplicationService.loadApplicationsFromFile();
 
         Parent root= FXMLLoader.load((getClass().getClassLoader().getResource("LoginPage.fxml")));
         primaryStage.setTitle("Registration");

@@ -21,8 +21,6 @@ public class AdministratorPageController {
     @FXML
     private TextField textFieldLastName;
     @FXML
-    private TextField textFieldAddress;
-    @FXML
     private TextField textFieldUniversity;
     @FXML
     private TextField textFieldSpecialization;
@@ -58,9 +56,9 @@ public class AdministratorPageController {
             if(checkBoxMedicalApproval.isSelected())
                 healtApprovalLocal = true;
 
-            UserService.addParticipant(textFieldFirstName.getText(),
+        /*    UserService.addParticipant(
+                    textFieldFirstName.getText(),
                     textFieldLastName.getText(),
-                    textFieldAddress.getText(),
                     textFieldUsername.getText(),
                     textFieldPassword.getText(),
                     textFieldUniversity.getText(),
@@ -68,8 +66,7 @@ public class AdministratorPageController {
                     textFieldID.getText(),
                     (String) choiceBoxYear.getValue(),
                     healtApprovalLocal,
-                    null,
-                    null);
+                    null, );*/
 
             //text.setText("Account created successfully!");
         } catch (Exception e) {
@@ -85,22 +82,21 @@ public class AdministratorPageController {
      *
      *
      * *******************************************************************************************/
-    public void handleTrainerRegisterAction() {
+/*    public void handleTrainerRegisterAction() {
         try {
 
             UserService.addTrainer(textFieldFirstName.getText(),
+         /*   UserService.addTrainer(textFieldFirstName.getText(),
                     textFieldLastName.getText(),
                     textFieldUsername.getText(),
                     textFieldPassword.getText(),
-                    textFieldAddress.getText(),
                     textFieldUniversity.getText(),
-                    null ,
-                    null );
+                    null,
+                    text);*/
             //text.setText("Account created successfully!");
-        } catch (Exception e) {
+        //} catch (Exception e) {
             //text.setText(e.getMessage());
-        }
-    }
+
 
     /*********************************************************************************************
      *

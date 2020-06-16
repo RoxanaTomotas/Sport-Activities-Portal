@@ -31,7 +31,7 @@
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
-                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0">
+                              <Button fx:id="Swim" mnemonicParsing="false" onAction="#goToSwim" prefHeight="170.0" prefWidth="170.0">
                                  <TilePane.margin>
                                     <Insets left="13.0" />
                                  </TilePane.margin>
@@ -43,7 +43,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0">
+                              <Button fx:id="Football" mnemonicParsing="false" onAction="#goToFootball" prefHeight="170.0" prefWidth="170.0">
                                  <opaqueInsets>
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                  </opaqueInsets>
@@ -58,7 +58,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0">
+                              <Button fx:id="BodyBuilding" mnemonicParsing="false" onAction="#goToBodybuilding" prefHeight="170.0" prefWidth="170.0">
                                  <TilePane.margin>
                                     <Insets left="26.0" />
                                  </TilePane.margin>
@@ -70,7 +70,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0">
+                              <Button fx:id="Aerobic" mnemonicParsing="false" onAction="#goToAerobic" prefHeight="170.0" prefWidth="170.0">
                                  <TilePane.margin>
                                     <Insets left="13.0" />
                                  </TilePane.margin>
@@ -82,7 +82,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0">
+                              <Button fx:id="Jogging" mnemonicParsing="false" onAction="#goToJogging" prefHeight="170.0" prefWidth="170.0">
                                  <graphic>
                                     <ImageView fitHeight="160.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

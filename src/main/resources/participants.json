@@ -4,13 +4,11 @@
     "lastName": "szmecskas",
     "username": "lidia.szm",
     "password":  "lidia",
-    "address": "Livezilor",
     "university": "UPT",
     "specialization": "AC",
     "uniqueID": "12",
     "studyYear": "2",
     "healthAppropval": 1,
-    "applications": [],
-    "contract": {}
+    "applications": []
   }
 ]

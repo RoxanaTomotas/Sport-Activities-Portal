@@ -4,12 +4,222 @@
     "lastName": "szmecskas",
     "username": "lidiaMARIANA.szm",
     "password":  "lidiaMARIANA",
-    "address": "Livezilor",
     "university": "UPT",
-    "contracts": [],
-    "sports": [],
-    "dates": []
+    "sports": "Fitness",
+    "dates": [
+      {
+        "day": "monday",
+        "startHour": 12,
+        "endHour": 13,
+        "startMinute": 0,
+        "endMinute": 0
+      },
+      {
+        "day": "thursday",
+        "startHour": 10,
+        "endHour": 11,
+        "startMinute": 1,
+        "endMinute": 50
+      }
+    ]
+  },
+  {
+    "firstName": "raul",
+    "lastName": "p",
+    "username": "rau",
+    "password":  "raul",
+    "university": "UPT",
+    "sports": "Fitness",
+    "dates": [
+      {
+        "day": "monday",
+        "startHour": 12,
+        "endHour": 13,
+        "startMinute": 0,
+        "endMinute": 0
+      },
+      {
+        "day": "thursday",
+        "startHour": 10,
+        "endHour": 11,
+        "startMinute": 1,
+        "endMinute": 50
+      }
+    ]
+  },
+
+  {
+    "firstName": "Andreea",
+    "lastName": "Biriescu",
+    "username": "",
+    "password":  "",
+    "university": "UPT",
+    "sports": "Jogging",
+    "dates": [
+      {
+        "day": "monday",
+        "startHour": 16,
+        "endHour": 17,
+        "startMinute": 10,
+        "endMinute": 10
+      },
+      {
+        "day": "sunday",
+        "startHour": 18,
+        "endHour": 19,
+        "startMinute": 30,
+        "endMinute": 30
+      },
+      {
+        "day": "friday",
+        "startHour": 9,
+        "endHour": 11,
+        "startMinute": 0,
+        "endMinute": 0
+      }
+    ]
+  },
+
+  {
+    "firstName": "Delfin",
+    "lastName": "p",
+    "username": "rau",
+    "password":  "raul",
+    "university": "UPT",
+    "sports": "Swim",
+    "dates": [
+      {
+        "day": "wensday",
+        "startHour": 13,
+        "endHour": 14,
+        "startMinute": 10,
+        "endMinute": 5
+      },
+      {
+        "day": "friday",
+        "startHour": 11,
+        "endHour": 11,
+        "startMinute": 10,
+        "endMinute": 50
+      }
+    ]
+  },
+
+  {
+    "firstName": "Mr. Runner",
+    "lastName": "p",
+    "username": "rau",
+    "password":  "raul",
+    "university": "UPT",
+    "sports": "Aerobic",
+    "dates": [
+      {
+        "day": "wensday",
+        "startHour": 13,
+        "endHour": 14,
+        "startMinute": 10,
+        "endMinute": 5
+      },
+      {
+        "day": "friday",
+        "startHour": 11,
+        "endHour": 11,
+        "startMinute": 10,
+        "endMinute": 50
+      }
+    ]
+  },
+
+  {
+    "firstName": "Mrs. Runner",
+    "lastName": "p",
+    "username": "rau",
+    "password":  "raul",
+    "university": "UPT",
+    "sports": "Aerobic",
+    "dates": [
+      {
+        "day": "wensday",
+        "startHour": 13,
+        "endHour": 14,
+        "startMinute": 10,
+        "endMinute": 5
+      },
+      {
+        "day": "friday",
+        "startHour": 11,
+        "endHour": 11,
+        "startMinute": 10,
+        "endMinute": 50
+      }
+    ]
+  },
+
+  {
+    "firstName": "Sonic",
+    "lastName": "Biriescu",
+    "username": "",
+    "password":  "",
+    "university": "UPT",
+    "sports": "Jogging",
+    "dates": [
+      {
+        "day": "monday",
+        "startHour": 16,
+        "endHour": 17,
+        "startMinute": 10,
+        "endMinute": 10
+      },
+      {
+        "day": "sunday",
+        "startHour": 18,
+        "endHour": 19,
+        "startMinute": 30,
+        "endMinute": 30
+      },
+      {
+        "day": "friday",
+        "startHour": 9,
+        "endHour": 11,
+        "startMinute": 0,
+        "endMinute": 0
+      }
+    ]
+  },
+
+  {
+    "firstName": "Roman",
+    "lastName": "Bogdan",
+    "username": "",
+    "password":  "",
+    "university": "UPT",
+    "sports": "Bodybuilding",
+    "dates": [
+      {
+        "day": "monday",
+        "startHour": 12,
+        "endHour": 13,
+        "startMinute": 10,
+        "endMinute": 10
+      },
+      {
+        "day": "sunday",
+        "startHour": 11,
+        "endHour": 12,
+        "startMinute": 30,
+        "endMinute": 30
+      },
+      {
+        "day": "friday",
+        "startHour": 9,
+        "endHour": 11,
+        "startMinute": 1,
+        "endMinute": 8
+      }
+    ]
   }
+
+
 ]
 
 

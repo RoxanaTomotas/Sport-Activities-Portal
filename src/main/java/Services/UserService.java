@@ -5,11 +5,13 @@ import Exceptions.CouldNotWriteUsersException;
 import Exceptions.EmptyFieldException;
 import Exceptions.IncorrectLoginData;
 import Model.*;
+import Model.Participant;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -84,11 +86,11 @@ public class UserService {
     *   This method adds the participant.
     *
     * **********************************************/
-    public static void addParticipant(String firstName, String lastName, String address, String username, String password, String university, String specialization, String uniqueID, String studyYear, boolean healthAppropval, List<Application> applications, Contract contract)throws Exception {
+    public static void addParticipant(String firstName, String lastName, String username, String password, String university, String specialization, String uniqueID, String studyYear , boolean healthAppropval)throws Exception {
 
         checkEmptyField(username,password);
         checkUsernameAlreadyExist(username);
-        participants.add(new Participant(firstName, lastName,  address,  username,  encodePassword(username, password),  university,  specialization,  uniqueID,  studyYear,  healthAppropval, null,null));
+        participants.add(new Participant(firstName, lastName,  username,  encodePassword(username, password),  university,  specialization,  uniqueID,  studyYear,  healthAppropval,null));
         persistParticipants();
     }
     
@@ -98,11 +100,11 @@ public class UserService {
      *   This method adds the trainer.
      *
      * **********************************************/
-    public static void addTrainer(String firstName, String lastName, String address, String username, String password, String university, List<Contract> contracts, List<Sport> sports)throws Exception {
+    public static void addTrainer(java.lang.String firstName, java.lang.String lastName, java.lang.String username, java.lang.String password, java.lang.String university, List<Application> application, java.lang.String sports, List<Date> dates)throws Exception {
 
         checkEmptyField(username,password);
         checkUsernameAlreadyExist(username);
-        trainers.add(new Trainer(firstName, lastName,  username,   encodePassword(username, password),  address,  university, null,null,null));
+        trainers.add(new Trainer(firstName, lastName,  username,   encodePassword(username, password),  university, application, sports, dates));
         persistTrainers();
     }
  
@@ -151,7 +153,7 @@ public class UserService {
     *
     *
     * *****************************************************/
-    private static void checkUsernameAlreadyExist(String username) throws Exception {
+    private static void checkUsernameAlreadyExist(java.lang.String username) throws Exception {
 
         /*Participants' usernames are checked.*/
      /*   for (Participant participant : participants) {
@@ -173,7 +175,7 @@ public class UserService {
     *  This method checks if an attribute is empty.
     *
     * **********************************************/
-    private static void checkEmptyField(String username, String password) throws EmptyFieldException {
+    private static void checkEmptyField(java.lang.String username, java.lang.String password) throws EmptyFieldException {
 
         if(username.equals("") || password.equals("")) throw new EmptyFieldException();
     }
@@ -184,7 +186,7 @@ public class UserService {
      *  This method checks if the login credentials are correct.
      *
      * ********************************************************/
-    public static void checkLoginCredentials(String username,String password, String role) throws IncorrectLoginData {
+    public static void checkLoginCredentials(java.lang.String username, java.lang.String password, java.lang.String role) throws IncorrectLoginData {
         int sw=0;
         if(role.equals("Trainer")) {
             for (Trainer trainer : trainers) {
@@ -201,6 +203,8 @@ public class UserService {
         if(role.equals("Participant")) {
             for (Participant participant : participants) {
                 if (Objects.equals(username, participant.getUsername())) {
+                    if(Objects.equals(password, participant.getPassword()))
+                        ListTrainersController.setActiveParticipant(participant);
                     sw=1;
                     if (!Objects.equals(password, participant.getPassword()))
                         throw new IncorrectLoginData();
@@ -218,7 +222,7 @@ public class UserService {
      *  This method encodes the password
      *
      * ********************************************************/
-    private static String encodePassword(String salt, String password) {
+    private static java.lang.String encodePassword(java.lang.String salt, java.lang.String password) {
 
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
@@ -226,7 +230,7 @@ public class UserService {
         byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
 
         /*This is the way a password should be encoded when checking the credentials*/
-        return new String(hashedPassword, StandardCharsets.UTF_8)
+        return new java.lang.String(hashedPassword, StandardCharsets.UTF_8)
                 .replace("\"", ""); /*to be able to save in JSON format*/
     }
 
@@ -244,16 +248,19 @@ public class UserService {
         return md;
     }
 
-    public static void setTrainers(String sport) {
+    public static void setTrainers(java.lang.String sport) {
             for (Trainer trainer : trainers) {
-                if(trainer.getSports().contains(sport))
-                     ltc.getTrainer().getItems().add(trainer.getFirstName());
+                System.out.println(sport+" "+trainer.getSports().toString());
+                if(trainer.getSports().equals(sport)) {
+                    System.out.println("lsa vedem");
+                    ltc.getTrainer().getItems().add(trainer.getFirstName());
+                }
             }
         }
-    public static void setDate(String name_trainer) {
+    public static void setDate(java.lang.String name_trainer) {
         for (Trainer trainer : trainers) {
             if(name_trainer.equals(trainer.getFirstName())) {
-                String date="";
+                java.lang.String date="";
                 for(Date date1:trainer.getDates() ) {
                     date = date1.getDay() + "-" + date1.getStartHour() + ":" + date1.getStartMinute() + "-" + date1.getEndHour() + ":" + date1.getEndMinute();
                     ltc.getDate().getItems().add(date);
@@ -262,7 +269,28 @@ public class UserService {
             }
         }
     }
+
+    public static Trainer setByTrainer(java.lang.String firstName) {
+        for(Trainer trainer:trainers) {
+            if(trainer.getFirstName().equals(firstName))
+                return trainer;
+        }
+        return null;
+    }
+
     public static void injecltc(ListTrainersController u) {
         ltc= u;
+    }
+
+
+    public static void sentParticiapnt(String participant, Application application) {
+        for(Participant participant1:participants) {
+            String name=participant1.getFirstName()+" "+participant1.getLastName();
+            if(name.equals(participant)) {
+                System.out.println("intra in if");
+                participant1.getApplications().add(application);
+            }
+        }
+        persistParticipants();
     }
 }
