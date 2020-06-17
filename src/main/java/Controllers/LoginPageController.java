@@ -29,29 +29,25 @@ public class LoginPageController {
     @FXML
     private Text text;
     @FXML
-    private ChoiceBox<Object> choiceBox;
+    private ChoiceBox<String> choiceBox;
     @FXML
     public void initialize() {
+        //choiceBox = new ChoiceBox<String>();
         choiceBox.getItems().addAll("Admin","Participant","Trainer");
         choiceBox.setValue("Admin");
     }
 
     public void handleLoginAction() {
-
-        System.out.println("Yeeee 1");
         try {
-            System.out.println("Yeeee 2");
 
             UserService.checkLoginCredentials(usernameField.getText(),passwordField.getText());
 
             Stage stage = (Stage) loginB.getScene().getWindow();
-            System.out.println("Yeeee 3");
-            stage.close();
-            System.out.println("Yeeee 4");
 
-            if(Objects.equals(choiceBox.toString(),"Admin")) {
+            stage.close();
+
+            if(((String)choiceBox.getValue()).equals("Admin")){
                 setAdministratorPage();
-                System.out.println("Yeeee 5");
             }
             else
                 if(Objects.equals(choiceBox.toString(),"Trainer"))
@@ -59,7 +55,7 @@ public class LoginPageController {
                 else
                     setParticipantPage();
         } catch (Exception e) {
-            text.setText(e.getMessage());
+            //text.setText(e.getMessage());
         }
     }
 
@@ -82,8 +78,7 @@ public class LoginPageController {
     }
 
     public void setAdministratorPage() throws IOException {
-        System.out.println("Yeeee 6");
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/Administrator.fxml")));
+        Parent root= FXMLLoader.load((getClass().getClassLoader().getResource("Administrator.fxml")));
 
         Stage stage = new Stage();
         stage.setTitle("Administrator");

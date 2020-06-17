@@ -8,12 +8,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,14 +29,18 @@ import java.util.Objects;
 public class UserService {
 
     /*List of participants*/
-    private static List<Participant> participants;
+    private static List<Participant> participants  = new ArrayList<Participant>();
 
     /*List of trainers*/
-    private static List<Trainer> trainers;
+    private static List<Trainer> trainers = new ArrayList<Trainer>();
+
+    /*List of sports*/
+    private static List<Sport> sports = new ArrayList<Sport>();
 
     /*Path for participants: participants_PATH*/
+    //private static final Path participants_PATH = FileSystemService.getPathToFile("config", "participants.json");
     private static final Path participants_PATH = FileSystemService.getPathToFile("config", "participants.json");
-    
+
     /*Path for trainers: trainers_PATH*/
     private static final Path trainers_PATH = FileSystemService.getPathToFile("config", "trainers.json");
 
@@ -41,41 +49,42 @@ public class UserService {
     * 
     * 
     * This method loads the users: both participants and trainers, from the corresponding files.
-    * 
-     * 
-     * 
+    *
+    *
     * *********************************************************************************************/
     public static void loadUsersFromFile() throws IOException {
 
+        System.out.println("intra in functia de load users from file");
         if (!Files.exists(participants_PATH)) {
-            FileUtils.copyURLToFile(Objects.requireNonNull(UserService.class.getClassLoader().getResource("participants.json")), participants_PATH.toFile());
+            FileUtils.copyURLToFile((Objects.requireNonNull(UserService.class.getClassLoader().getResource("participants.json"))), participants_PATH.toFile());
         }
+        System.out.println("face object mapper de participanti");
+        ObjectMapper objectMapperParticipants = new ObjectMapper();
+        System.out.println("incepe sa citeasca participanti");
 
-        ObjectMapper objectMapperparticipants = new ObjectMapper();
-
-        participants = objectMapperparticipants.readValue(participants_PATH.toFile(), new TypeReference<List<Participant>>() {
-        });
+        participants = objectMapperParticipants.readValue(participants_PATH.toFile(), new TypeReference<List<Participant>>() {});
+        System.out.println("a citit participanti");
 
         if (!Files.exists(trainers_PATH)) {
-            FileUtils.copyURLToFile(Objects.requireNonNull(UserService.class.getClassLoader().getResource("trainers.json")), trainers_PATH.toFile());
+            FileUtils.copyURLToFile((Objects.requireNonNull(UserService.class.getClassLoader().getResource("trainers.json"))), trainers_PATH.toFile());
         }
-
-        ObjectMapper objectMappertrainers = new ObjectMapper();
-
-        trainers = objectMappertrainers.readValue(trainers_PATH.toFile(), new TypeReference<List<Trainer>>() {
+        System.out.println("face object mapper de traineri");
+        ObjectMapper objectMapperTrainers = new ObjectMapper();
+        System.out.println("citeste traineri");
+        trainers = objectMapperTrainers.readValue(trainers_PATH.toFile(), new TypeReference<List<Trainer>>() {
         });
-    } 
+        System.out.println("a citit traineri");
+    }
 
-    
     /* *********************************************
     *
     *   This method adds the participant.
     *
     * **********************************************/
-    public static void addParticipant(String firstName, String lastName, String address, String username, String password, String university, String specialization, String uniqueID, int studyYear, boolean healthAppropval, List<Application> applications, Contract contract)throws Exception {
+    public static void addParticipant(String firstName, String lastName, String address, String username, String password, String university, String specialization, String uniqueID, String studyYear, boolean healthAppropval, List<Application> applications, Contract contract)throws Exception {
 
         checkEmptyField(username,password);
-        checkUsernameAlreadyExist(username);
+        //checkUsernameAlreadyExist(username);
         participants.add(new Participant(firstName, lastName,  address,  username,  encodePassword(username, password),  university,  specialization,  uniqueID,  studyYear,  healthAppropval, null,null));
         persistParticipants();
     }
@@ -88,8 +97,8 @@ public class UserService {
      * **********************************************/
     public static void addTrainer(String firstName, String lastName, String address, String username, String password, String university, List<Contract> contracts, List<Sport> sports)throws Exception {
 
-        checkEmptyField(username,password);
-        checkUsernameAlreadyExist(username);
+        //checkEmptyField(username,password);
+        //checkUsernameAlreadyExist(username);
         trainers.add(new Trainer(firstName, lastName,  username,   encodePassword(username, password),  address,  university, null,null));
         persistTrainers();
     }
@@ -104,10 +113,13 @@ public class UserService {
     private static void persistParticipants() {
 
         try {
+            System.out.println("? persistParticipants");
 
             ObjectMapper objectMapper = new ObjectMapper();
+
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(participants_PATH.toFile(), participants);
 
+            System.out.println("Scrie in fisier");
         } catch (IOException e) {
             throw new CouldNotWriteUsersException();
         }
@@ -126,6 +138,7 @@ public class UserService {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(trainers_PATH.toFile(), trainers);
 
+            System.out.println("Scrie in fisierul de traineri ");
         } catch (IOException e) {
             throw new CouldNotWriteUsersException();
         }
@@ -140,12 +153,14 @@ public class UserService {
     *
     * *****************************************************/
     private static void checkUsernameAlreadyExist(String username) throws Exception {
-
+        System.out.println(" ///////// ? checkUsernameAlreadyExist");
         /*Participants' usernames are checked.*/
         for (Participant participant : participants) {
+            System.out.println(" ///////// ? ////// for checkUsernameAlreadyExist");
             if (Objects.equals(username, participant.getUsername()))
                 throw new CouldNotWriteUsersException();//change exception
         }
+        System.out.println("?checkUsernameAlreadyExist -> trainers");
         /*Trainers' usernames are checked.*/
         for (Trainer trainer : trainers) {
             if (Objects.equals(username, trainer.getUsername()))
@@ -160,7 +175,6 @@ public class UserService {
     *
     * **********************************************/
     private static void checkEmptyField(String username, String password) throws EmptyFieldException {
-
         if(username.equals("") || password.equals("")) throw new EmptyFieldException();
     }
 

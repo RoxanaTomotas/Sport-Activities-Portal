@@ -1,44 +1,42 @@
 package Model;
 
-import javafx.scene.control.ChoiceBox;
-
 import java.util.Objects;
 
 public class User {
-    private String username;
-    private String password;
-    private String role;
+    private Participant username;
+    private Participant password;
+    private Participant role;
 
     public User(){
     }
 
-    public User(String username, String password, String role){
+    public User(Participant username, Participant password, Participant role){
         this.username=username;
         this.password=password;
         this.role=role;
     }
 
-    public String getUsername() {
+    public Participant getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(Participant username) {
         this.username = username;
     }
 
-    public String getPassword() {
+    public Participant getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(Participant password) {
         this.password = password;
     }
 
-    public void setRole(String role) {
+    public void setRole(Participant role) {
         this.role=role;
     }
 
-    public String getRole() {
+    public Participant getRole() {
         return role;
     }
 
@@ -56,12 +54,4 @@ public class User {
         return Objects.hash(username, password);
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role+ '\''+
-                '}';
-    }
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TrainerPageController">
+   <children>
+      <ImageView fitHeight="336.0" fitWidth="601.0" layoutY="65.0" pickOnBounds="true">
+         <image>
+            <Image url="@Image/Sport_16.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

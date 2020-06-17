@@ -1,15 +1,10 @@
 package Controllers;
 
-import Model.Application;
-import Model.Contract;
-import Model.Sport;
 import Services.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javax.swing.*;
-import java.util.Objects;
+
+import java.util.*;
 
 public class AdministratorPageController {
 
@@ -42,6 +37,18 @@ public class AdministratorPageController {
     @FXML
     private CheckBox checkBoxMedicalApproval;
     @FXML
+    private CheckBox checkBoxFitness;
+    @FXML
+    private CheckBox checkBoxAerobic;
+    @FXML
+    private CheckBox checkBoxJogging;
+    @FXML
+    private CheckBox checkBoxCulturism;
+    @FXML
+    private CheckBox checkBoxSwimming;
+    @FXML
+    private CheckBox checkBoxFotbal;
+    @FXML
     private Button buttonParticipantRegister;
     @FXML
     private Button buttonTrainerRegister;
@@ -59,7 +66,10 @@ public class AdministratorPageController {
      *
     * *******************************************************************************************/
     public void handleParticipantRegisterAction() {
+
         try {
+            UserService.loadUsersFromFile();
+
             boolean healtApprovalLocal=false;
 
             if(checkBoxMedicalApproval.isSelected())
@@ -73,12 +83,22 @@ public class AdministratorPageController {
                     textFieldUniversity.getText(),
                     textFieldSpecialization.getText(),
                     textFieldID.getText(),
-                    (Integer) choiceBoxYear.getValue(),
+                    (String) choiceBoxYear.getValue(),
                     healtApprovalLocal,
                     null,
                     null);
 
-            //text.setText("Account created successfully!");
+                    textFieldFirstName.clear();
+                    textFieldLastName.clear();
+                    textFieldAddress.clear();
+                    textFieldUsername.clear();
+                    textFieldPassword.clear();
+                    textFieldUniversity.clear();
+                    textFieldSpecialization.clear();
+                    textFieldID.clear();
+                    choiceBoxYear.setValue("N/A");
+                    checkBoxMedicalApproval.setSelected(false);
+                    //text.setText("Account created successfully!");
         } catch (Exception e) {
             //text.setText(e.getMessage());
         }
@@ -93,8 +113,39 @@ public class AdministratorPageController {
      *
      * *******************************************************************************************/
     public void handleTrainerRegisterAction() {
-        try {
 
+        try {
+            boolean fitnessTrainer=false;
+            boolean aerobicTrainer=false;
+            boolean fotbalTrainer=false;
+            boolean joggingTrainer=false;
+            boolean culturismTrainer=false;
+            boolean swimmingTrainer=false;
+
+            List<Sport> trainerSports = new ArrayList<Sport>();
+
+            if(checkBoxFitness.isSelected())
+                fitnessTrainer = true;
+
+            if(checkBoxAerobic.isSelected())
+                aerobicTrainer = true;
+
+            if(checkBoxCulturism.isSelected())
+                culturismTrainer = true;
+
+            if(checkBoxJogging.isSelected())
+                joggingTrainer = true;
+
+            if(checkBoxSwimming.isSelected())
+                swimmingTrainer = true;
+
+            if(checkBoxFotbal.isSelected())
+                fotbalTrainer = true;
+
+            if(fitnessTrainer == true)
+
+
+            System.out.println("addParticipant-9");
             UserService.addTrainer(textFieldFirstName.getText(),
                     textFieldLastName.getText(),
                     textFieldUsername.getText(),
@@ -103,6 +154,7 @@ public class AdministratorPageController {
                     textFieldUniversity.getText(),
                     null ,
                     null );
+            System.out.println("Scrie in fisier1");
             //text.setText("Account created successfully!");
         } catch (Exception e) {
             //text.setText(e.getMessage());

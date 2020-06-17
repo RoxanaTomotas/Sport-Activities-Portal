@@ -36,7 +36,7 @@
                         <TextField fx:id="textFieldID" layoutX="430.0" layoutY="175.0" />
                         <TextField fx:id="textFieldUsername" layoutX="430.0" layoutY="265.0" />
                         <TextField fx:id="textFieldPassword" layoutX="430.0" layoutY="295.0" /> 
-                        <Button fx:id="button" layoutX="458.0" layoutY="328.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="94.0" text="Register" textFill="#0d0d0d">
+                        <Button fx:id="buttonParticipantRegister" layoutX="458.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleParticipantRegisterAction" prefHeight="29.0" prefWidth="94.0" text="Register" textFill="#0d0d0d">
                            <font>
                               <Font size="13.0" />
                            </font>
@@ -55,19 +55,27 @@
                               <Image url="@Image/Sport_12.jpg" />
                            </image>
                         </ImageView>
-                         <Label fx:id="fn" layoutX="270.0" layoutY="85.0" text="First Name:" />
-                         <Label fx:id="ln" layoutX="270.0" layoutY="115.0" text="Last Name:" />
-                         <Label fx:id="add" layoutX="270.0" layoutY="145.0" text="Address:" />
-                         <Label fx:id="u" layoutX="270.0" layoutY="175.0" text="University:" />
-                         <Label fx:id="e" layoutX="270.0" layoutY="205.0" text="Username:" />
-                         <Label fx:id="p" layoutX="270.0" layoutY="235.0" text="Password:" />
-                         <TextField fx:id="textFieldFirstNameTrainer" layoutX="345.0" layoutY="85.0" />
-                         <TextField fx:id="textFieldLastNameTrainer" layoutX="345.0" layoutY="115.0" />
-                         <TextField fx:id="textFieldAddressTrainer" layoutX="345.0" layoutY="145.0" />
-                         <TextField fx:id="textFieldUniveristyTrainer" layoutX="345.0" layoutY="175.0" />
-                         <TextField fx:id="textFieldUsernameTrainer" layoutX="345.0" layoutY="205.0" />
-                         <TextField fx:id="textFieldPasswordTrainer" layoutX="345.0" layoutY="235.0" />
-                        <Button fx:id="buttonTrainerRegister" layoutX="345.0" layoutY="272.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="Button" />
+                         <Label fx:id="fn" layoutX="270.0" layoutY="30.0" text="First Name:" />
+                         <Label fx:id="ln" layoutX="270.0" layoutY="60.0" text="Last Name:" />
+                         <Label fx:id="add" layoutX="270.0" layoutY="90.0" text="Address:" />
+                         <Label fx:id="u" layoutX="270.0" layoutY="120.0" text="University:" />
+                         <Label fx:id="e" layoutX="270.0" layoutY="150.0" text="Username:" />
+                         <Label fx:id="p" layoutX="270.0" layoutY="180.0" text="Password:" />
+                         <TextField fx:id="textFieldFirstNameTrainer" layoutX="345.0" layoutY="25.0" />
+                         <TextField fx:id="textFieldLastNameTrainer" layoutX="345.0" layoutY="55.0" />
+                         <TextField fx:id="textFieldAddressTrainer" layoutX="345.0" layoutY="85.0" />
+                         <TextField fx:id="textFieldUniveristyTrainer" layoutX="345.0" layoutY="115.0" />
+                         <TextField fx:id="textFieldUsernameTrainer" layoutX="345.0" layoutY="145.0" />
+                         <TextField fx:id="textFieldPasswordTrainer" layoutX="345.0" layoutY="175.0" />
+                         <Button fx:id="buttonTrainerRegister" layoutX="348.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleTrainerRegisterAction" prefHeight="25.0" prefWidth="144.0" text="Register" />
+                        <CheckBox fx:id="checkBoxFitness" layoutX="340.0" layoutY="220.0" mnemonicParsing="false" text="Fitness" />
+                        <CheckBox fx:id="checkBoxAerobic" layoutX="340.0" layoutY="250.0" mnemonicParsing="false" text="Aerobic" />
+                        <CheckBox fx:id="checkBoxCulturism" layoutX="430.0" layoutY="220.0" mnemonicParsing="false" text="Culturism" />
+                        <CheckBox fx:id="checkBoxJogging" layoutX="340.0" layoutY="280.0" mnemonicParsing="false" text="Jogging" />
+                        <CheckBox fx:id="checkBoxFotbal" layoutX="430.0" layoutY="250.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="55.0" text="Fotbal" />
+                        <CheckBox fx:id="checkBoxSwimming" layoutX="430.0" layoutY="280.0" mnemonicParsing="false" text="Swimming" />
+
+
                      </children></AnchorPane>
             </content>
           </Tab>

@@ -1,6 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *
@@ -10,52 +12,23 @@ import java.util.List;
 
 public class Trainer {
 
-    protected String firstName; //First name of the trainer
-    protected String lastName; //Last name of the trainer
-    protected String username; //Trainer's username
     protected String password; //Trainer's password
-    protected String address; //Trainer's address
     protected String university; //Trainer's university
-    protected List<Contract> contracts; //Trainer's contracts
-    protected List<Sport> sports; //Trainer's assigned sports
+    protected List<Application> applications; //Trainer's contracts
+    protected String sports; //Trainer's assigned sport
+    protected List<Date> dates;
 
-    Trainer() {
-        this.firstName = "";
-        this.lastName = "";
-        this.username = "";
-        this.password = "";
-        this.address = "";
-        this.university = "";
-    }
+    public Trainer() {}
 
-    public Trainer(String firstName, String lastName, String username, String password, String address, String university, List<Contract> contracts, List<Sport> sports) {
+    public Trainer(String firstName, String lastName, String username, String password, String university, List<Application> applications, String sports, List<Date> dates) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
-        this.address = address;
         this.university = university;
-        if (this.contracts != null) {
-            this.contracts.addAll(contracts);
-        }
-        if (this.sports != null) {
-            this.sports.addAll(sports);
-        }
-    }
-
-    Trainer(Trainer trainer) {
-        this.firstName = trainer.firstName;
-        this.lastName = trainer.lastName;
-        this.username = trainer.username;
-        this.password = trainer.password;
-        this.address = trainer.address;
-        this.university = trainer.university;
-        if (this.contracts != null) {
-            this.contracts.addAll(trainer.contracts);
-        }
-        if (this.sports != null) {
-            this.sports.addAll(trainer.sports);
-        }
+        this.applications = applications;
+        this.sports = sports;
+        this.dates = dates;
     }
 
     public String getFirstName() {
@@ -70,20 +43,24 @@ public class Trainer {
         return username;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPassword() {
+        return password;
     }
 
     public String getUniversity() {
         return university;
     }
 
-    public List<Contract> getContracts() {
-        return contracts;
+    public List<Application> getApplications() {
+        return applications;
     }
 
-    public List<Sport> getSports() {
+    public String getSports() {
         return sports;
+    }
+
+    public List<Date> getDates() {
+        return dates;
     }
 
     public void setFirstName(String firstName) {
@@ -98,27 +75,64 @@ public class Trainer {
         this.username = username;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setUniversity(String university) {
         this.university = university;
     }
 
-    public void setContracts(List<Contract> contracts) {
-        this.contracts = contracts;
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
     }
 
-    public void setSports(List<Sport> sports) {
+    public void setSports(String sports) {
         this.sports = sports;
     }
 
-    public String getPassword() {
-        return password;
+    public void setDates(List<Date> dates) {
+        this.dates = dates;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    protected String firstName; //First name of the trainer
+    protected String lastName; //Last name of the trainer
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trainer trainer = (Trainer) o;
+        return Objects.equals(firstName, trainer.firstName) &&
+                Objects.equals(lastName, trainer.lastName) &&
+                Objects.equals(username, trainer.username) &&
+                Objects.equals(password, trainer.password) &&
+                Objects.equals(university, trainer.university) &&
+                Objects.equals(applications, trainer.applications) &&
+                Objects.equals(sports, trainer.sports) &&
+                Objects.equals(dates, trainer.dates);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, username, password, university, applications, sports, dates);
+    }
+
+    protected String username; //Trainer's username
+
+    @Override
+    public String toString() {
+        return "Trainer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", university='" + university + '\'' +
+                ", applications=" + applications +
+                ", sports='" + sports + '\'' +
+                ", dates=" + dates +
+                '}';
+    }
+
+
 }
