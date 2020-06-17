@@ -15,11 +15,6 @@ public class Date {
     protected int endMinute; ////The end minute of the sport
 
     public Date() {
-        this.day = "";
-        this.startHour = 0;
-        this.endHour = 0;
-        this.startMinute = 0;
-        this.endMinute = 0;
     }
 
     public Date(String day, int startHour, int endHour, int startMinute, int endMinute) {

@@ -1,15 +1,8 @@
 package Controllers;
 
-import Model.Application;
-import Model.Contract;
-import Model.Sport;
 import Services.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javax.swing.*;
-import java.util.Objects;
 
 public class AdministratorPageController {
 
@@ -27,8 +20,6 @@ public class AdministratorPageController {
     private TextField textFieldFirstName;
     @FXML
     private TextField textFieldLastName;
-    @FXML
-    private TextField textFieldAddress;
     @FXML
     private TextField textFieldUniversity;
     @FXML
@@ -65,18 +56,17 @@ public class AdministratorPageController {
             if(checkBoxMedicalApproval.isSelected())
                 healtApprovalLocal = true;
 
-            UserService.addParticipant(textFieldFirstName.getText(),
+        /*    UserService.addParticipant(
+                    textFieldFirstName.getText(),
                     textFieldLastName.getText(),
-                    textFieldAddress.getText(),
                     textFieldUsername.getText(),
                     textFieldPassword.getText(),
                     textFieldUniversity.getText(),
                     textFieldSpecialization.getText(),
                     textFieldID.getText(),
-                    (Integer) choiceBoxYear.getValue(),
+                    (String) choiceBoxYear.getValue(),
                     healtApprovalLocal,
-                    null,
-                    null);
+                    null, );*/
 
             //text.setText("Account created successfully!");
         } catch (Exception e) {
@@ -92,22 +82,21 @@ public class AdministratorPageController {
      *
      *
      * *******************************************************************************************/
-    public void handleTrainerRegisterAction() {
+/*    public void handleTrainerRegisterAction() {
         try {
 
             UserService.addTrainer(textFieldFirstName.getText(),
+         /*   UserService.addTrainer(textFieldFirstName.getText(),
                     textFieldLastName.getText(),
                     textFieldUsername.getText(),
                     textFieldPassword.getText(),
-                    textFieldAddress.getText(),
                     textFieldUniversity.getText(),
-                    null ,
-                    null );
+                    null,
+                    text);*/
             //text.setText("Account created successfully!");
-        } catch (Exception e) {
+        //} catch (Exception e) {
             //text.setText(e.getMessage());
-        }
-    }
+
 
     /*********************************************************************************************
      *
