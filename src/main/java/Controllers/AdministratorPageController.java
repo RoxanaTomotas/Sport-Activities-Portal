@@ -1,10 +1,15 @@
 package Controllers;
 
+import Model.Application;
+import Model.Contract;
+import Model.Sport;
 import Services.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.util.*;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javax.swing.*;
+import java.util.Objects;
 
 public class AdministratorPageController {
 
@@ -66,10 +71,7 @@ public class AdministratorPageController {
      *
     * *******************************************************************************************/
     public void handleParticipantRegisterAction() {
-
         try {
-            UserService.loadUsersFromFile();
-
             boolean healtApprovalLocal=false;
 
             if(checkBoxMedicalApproval.isSelected())
@@ -113,7 +115,6 @@ public class AdministratorPageController {
      *
      * *******************************************************************************************/
     public void handleTrainerRegisterAction() {
-
         try {
             boolean fitnessTrainer=false;
             boolean aerobicTrainer=false;
@@ -154,7 +155,6 @@ public class AdministratorPageController {
                     textFieldUniversity.getText(),
                     null ,
                     null );
-            System.out.println("Scrie in fisier1");
             //text.setText("Account created successfully!");
         } catch (Exception e) {
             //text.setText(e.getMessage());

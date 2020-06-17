@@ -1,42 +1,44 @@
 package Model;
 
+import javafx.scene.control.ChoiceBox;
+
 import java.util.Objects;
 
 public class User {
-    private Participant username;
-    private Participant password;
-    private Participant role;
+    private String username;
+    private String password;
+    private String role;
 
     public User(){
     }
 
-    public User(Participant username, Participant password, Participant role){
+    public User(String username, String password, String role){
         this.username=username;
         this.password=password;
         this.role=role;
     }
 
-    public Participant getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(Participant username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public Participant getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Participant password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setRole(Participant role) {
+    public void setRole(String role) {
         this.role=role;
     }
 
-    public Participant getRole() {
+    public String getRole() {
         return role;
     }
 
