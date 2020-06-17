@@ -1,8 +1,7 @@
 package Controllers;
 
 import Model.Application;
-import Model.Contract;
-import Model.Sport;
+import Model.Date;
 import Services.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -57,6 +56,16 @@ public class AdministratorPageController {
     private Button buttonParticipantRegister;
     @FXML
     private Button buttonTrainerRegister;
+    @FXML
+    private TextField textFieldFirstNameTrainer;
+    @FXML
+    private TextField textFieldLastNameTrainer;
+    @FXML
+    private TextField textFieldUniveristyTrainer;
+    @FXML
+    private TextField textFieldUsernameTrainer;
+    @FXML
+    private TextField textFieldPasswordTrainer;
 
     public void initialize() {
         choiceBoxYear.getItems().addAll("1","2","3","4","5","6","N/A");
@@ -64,14 +73,17 @@ public class AdministratorPageController {
     }
 
     /*********************************************************************************************
-    *
-    *
-    *   This method has to check if the participant is not registered yet and to register him/her.
-    *
+     *
+     *
+     *   This method has to check if the participant is not registered yet and to register him/her.
+     *
      *
     * *******************************************************************************************/
     public void handleParticipantRegisterAction() {
+
         try {
+            UserService.loadUsersFromFile();
+
             boolean healtApprovalLocal=false;
 
             if(checkBoxMedicalApproval.isSelected())
@@ -79,28 +91,25 @@ public class AdministratorPageController {
 
             UserService.addParticipant(textFieldFirstName.getText(),
                     textFieldLastName.getText(),
-                    textFieldAddress.getText(),
                     textFieldUsername.getText(),
                     textFieldPassword.getText(),
                     textFieldUniversity.getText(),
                     textFieldSpecialization.getText(),
                     textFieldID.getText(),
                     (String) choiceBoxYear.getValue(),
-                    healtApprovalLocal,
-                    null,
-                    null);
+                    healtApprovalLocal);
 
-                    textFieldFirstName.clear();
-                    textFieldLastName.clear();
-                    textFieldAddress.clear();
-                    textFieldUsername.clear();
-                    textFieldPassword.clear();
-                    textFieldUniversity.clear();
-                    textFieldSpecialization.clear();
-                    textFieldID.clear();
-                    choiceBoxYear.setValue("N/A");
-                    checkBoxMedicalApproval.setSelected(false);
-                    //text.setText("Account created successfully!");
+            textFieldFirstName.clear();
+            textFieldLastName.clear();
+            textFieldAddress.clear();
+            textFieldUsername.clear();
+            textFieldPassword.clear();
+            textFieldUniversity.clear();
+            textFieldSpecialization.clear();
+            textFieldID.clear();
+            choiceBoxYear.setValue("N/A");
+            checkBoxMedicalApproval.setSelected(false);
+            //text.setText("Account created successfully!");
         } catch (Exception e) {
             //text.setText(e.getMessage());
         }
@@ -115,6 +124,7 @@ public class AdministratorPageController {
      *
      * *******************************************************************************************/
     public void handleTrainerRegisterAction() {
+
         try {
             boolean fitnessTrainer=false;
             boolean aerobicTrainer=false;
@@ -123,7 +133,7 @@ public class AdministratorPageController {
             boolean culturismTrainer=false;
             boolean swimmingTrainer=false;
 
-            List<Sport> trainerSports = new ArrayList<Sport>();
+            //List<Sport> trainerSports = new ArrayList<Sport>();
 
             if(checkBoxFitness.isSelected())
                 fitnessTrainer = true;
@@ -145,16 +155,17 @@ public class AdministratorPageController {
 
             if(fitnessTrainer == true)
 
+                System.out.println("addParticipant-9");
 
-            System.out.println("addParticipant-9");
-            UserService.addTrainer(textFieldFirstName.getText(),
-                    textFieldLastName.getText(),
-                    textFieldUsername.getText(),
-                    textFieldPassword.getText(),
-                    textFieldAddress.getText(),
-                    textFieldUniversity.getText(),
+            UserService.addTrainer(textFieldFirstNameTrainer.getText(),
+                    textFieldLastNameTrainer.getText(),
+                    textFieldUsernameTrainer.getText(),
+                    textFieldPasswordTrainer.getText(),
+                    textFieldUniveristyTrainer.getText(),
                     null ,
-                    null );
+                    "",
+                    null);
+            System.out.println("Scrie in fisier1");
             //text.setText("Account created successfully!");
         } catch (Exception e) {
             //text.setText(e.getMessage());

@@ -19,7 +19,7 @@ public class TrainerPageController implements Initializable {
     @FXML
     private ListView sportList;
 
-    public List<Sport> sports  = new ArrayList<Sport>();
+    public List<String> sports  = new ArrayList<String>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -50,7 +50,7 @@
             <content>
               <AnchorPane fx:id="PaneTrainers" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="textFieldLastNameTrainer" fitHeight="379.0" fitWidth="626.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="img2" fitHeight="379.0" fitWidth="626.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Image/Sport_12.jpg" />
                            </image>
