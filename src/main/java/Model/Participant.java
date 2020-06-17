@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Objects;
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*
-*   This class represents the object participant.
-*
+ *
+ *   This class represents the object participant.
+ *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 public class Participant {

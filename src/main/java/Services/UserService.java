@@ -22,10 +22,10 @@ import java.util.List;
 import java.util.Objects;
 
 /* ******************************************************************
-*
-*   User Service manages the users: both participants and trainers
-*
-* *******************************************************************/
+ *
+ *   User Service manages the users: both participants and trainers
+ *
+ * *******************************************************************/
 public class UserService {
 
     /*List of participants*/
@@ -44,21 +44,21 @@ public class UserService {
 
     /*Path for participants: participants_PATH*/
     private static final Path participants_PATH = FileSystemService.getPathToFile("config", "participants.json");
-    
+
     /*Path for trainers: trainers_PATH*/
     private static final Path trainers_PATH = FileSystemService.getPathToFile("config", "trainers.json");
     int sw;
     private static ListTrainersController ltc;
 
-    
+
     /*********************************************************************************************
-    * 
-    * 
-    * This method loads the users: both participants and trainers, from the corresponding files.
-    * 
-     * 
-     * 
-    * *********************************************************************************************/
+     *
+     *
+     * This method loads the users: both participants and trainers, from the corresponding files.
+     *
+     *
+     *
+     * *********************************************************************************************/
     public static void loadUsersFromFile() throws IOException {
 
         if (!Files.exists(participants_PATH)) {
@@ -78,14 +78,14 @@ public class UserService {
 
         trainers = objectMappertrainers.readValue(trainers_PATH.toFile(), new TypeReference<List<Trainer>>() {
         });
-    } 
+    }
 
-    
+
     /* *********************************************
-    *
-    *   This method adds the participant.
-    *
-    * **********************************************/
+     *
+     *   This method adds the participant.
+     *
+     * **********************************************/
     public static void addParticipant(String firstName, String lastName, String username, String password, String university, String specialization, String uniqueID, String studyYear , boolean healthAppropval)throws Exception {
 
         checkEmptyField(username,password);
@@ -93,7 +93,7 @@ public class UserService {
         participants.add(new Participant(firstName, lastName,  username,  encodePassword(username, password),  university,  specialization,  uniqueID,  studyYear,  healthAppropval,null));
         persistParticipants();
     }
-    
+
 
     /* *********************************************
      *
@@ -107,14 +107,14 @@ public class UserService {
         trainers.add(new Trainer(firstName, lastName,  username,   encodePassword(username, password),  university, application, sports, dates));
         persistTrainers();
     }
- 
-    
+
+
     /****************************************
-    * 
-    * 
-    *  This method persists the participants.
-    * 
-    * ****************************************/
+     *
+     *
+     *  This method persists the participants.
+     *
+     * ****************************************/
     private static void persistParticipants() {
 
         try {
@@ -127,7 +127,7 @@ public class UserService {
         }
     }
 
-    
+
     /****************************************
      *
      *
@@ -136,7 +136,7 @@ public class UserService {
      * ****************************************/
     private static void persistTrainers() {
 
-        try { 
+        try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(trainers_PATH.toFile(), trainers);
 
@@ -147,34 +147,33 @@ public class UserService {
 
 
     /*****************************************************
-    *
-    *
-    *  This method checks if an username already exists.
-    *
-    *
-    * *****************************************************/
+     *
+     *
+     *  This method checks if an username already exists.
+     *
+     *
+     * *****************************************************/
     private static void checkUsernameAlreadyExist(java.lang.String username) throws Exception {
 
         /*Participants' usernames are checked.*/
-     /*   for (Participant participant : participants) {
-            System.out.println("Faci?");
+        /*for (Participant participant : participants) {
             if (Objects.equals(username, participant.getUsername()))
                 throw new CouldNotWriteUsersException();//change exception
         }*/
-        System.out.println("Faci2?");
         /*Trainers' usernames are checked.*/
         for (Trainer trainer : trainers) {
-            if (Objects.equals(username, trainer.getUsername()))
+            if (Objects.equals(username, trainer.getUsername())) {
                 throw new CouldNotWriteUsersException();//change exception
+            }
+            }
         }
-    }
 
 
     /**********************************************
-    *
-    *  This method checks if an attribute is empty.
-    *
-    * **********************************************/
+     *
+     *  This method checks if an attribute is empty.
+     *
+     * **********************************************/
     private static void checkEmptyField(java.lang.String username, java.lang.String password) throws EmptyFieldException {
 
         if(username.equals("") || password.equals("")) throw new EmptyFieldException();
@@ -249,14 +248,14 @@ public class UserService {
     }
 
     public static void setTrainers(java.lang.String sport) {
-            for (Trainer trainer : trainers) {
-                System.out.println(sport+" "+trainer.getSports().toString());
-                if(trainer.getSports().equals(sport)) {
-                    System.out.println("lsa vedem");
-                    ltc.getTrainer().getItems().add(trainer.getFirstName());
-                }
+        for (Trainer trainer : trainers) {
+            System.out.println(sport+" "+trainer.getSports().toString());
+            if(trainer.getSports().equals(sport)) {
+                System.out.println("lsa vedem");
+                ltc.getTrainer().getItems().add(trainer.getFirstName());
             }
         }
+    }
     public static void setDate(java.lang.String name_trainer) {
         for (Trainer trainer : trainers) {
             if(name_trainer.equals(trainer.getFirstName())) {
