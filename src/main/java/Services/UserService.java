@@ -9,9 +9,7 @@ import Model.Participant;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
-
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -48,7 +46,7 @@ public class UserService {
     /*Path for trainers: trainers_PATH*/
     private static final Path trainers_PATH = FileSystemService.getPathToFile("config", "trainers.json");
     int sw;
-    private static ListTrainersController ltc;
+    public static ListTrainersController ltc;
 
 
     /*********************************************************************************************
@@ -154,13 +152,6 @@ public class UserService {
      *
      * *****************************************************/
     private static void checkUsernameAlreadyExist(java.lang.String username) throws Exception {
-
-        /*Participants' usernames are checked.*/
-        /*for (Participant participant : participants) {
-            if (Objects.equals(username, participant.getUsername()))
-                throw new CouldNotWriteUsersException();//change exception
-        }*/
-        /*Trainers' usernames are checked.*/
         for (Trainer trainer : trainers) {
             if (Objects.equals(username, trainer.getUsername())) {
                 throw new CouldNotWriteUsersException();//change exception

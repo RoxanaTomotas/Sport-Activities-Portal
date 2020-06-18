@@ -15,9 +15,8 @@ public class ListTrainersController {
 
     @FXML
     private ChoiceBox date;
-    @FXML
-    private Button createContract;
-    private static java.lang.String sport;
+
+    private static String sport;
 
     private static Participant participant;
 
