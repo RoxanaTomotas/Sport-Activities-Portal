@@ -6,6 +6,9 @@ package Model;
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+import javafx.scene.control.Control;
+import javafx.scene.control.SkinBase;
+
 import java.util.Objects;
 
 public class Application {
@@ -92,7 +95,5 @@ public class Application {
                 ", status=" + status +
                 '}';
     }
-
-
 
 }

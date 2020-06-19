@@ -2,9 +2,14 @@ package Services;
 
 import Exceptions.CouldNotWriteUsersException;
 import Model.*;
-import Model.Participant;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
@@ -49,5 +54,6 @@ public class ApplicationService {
             throw new CouldNotWriteUsersException();
         }
     }
+
 
 }
