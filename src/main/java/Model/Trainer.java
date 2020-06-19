@@ -12,6 +12,8 @@ import java.util.Objects;
 
 public class Trainer {
 
+    protected String firstName; //First name of the trainer
+    protected String lastName; //Last name of the trainer
     protected String password; //Trainer's password
     protected String university; //Trainer's university
     protected List<Application> applications; //Trainer's contracts
@@ -94,9 +96,6 @@ public class Trainer {
     public void setDates(List<Date> dates) {
         this.dates = dates;
     }
-
-    protected String firstName; //First name of the trainer
-    protected String lastName; //Last name of the trainer
 
     @Override
     public boolean equals(Object o) {
