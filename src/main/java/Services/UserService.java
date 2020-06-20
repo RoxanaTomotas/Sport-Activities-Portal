@@ -1,6 +1,7 @@
 package Services;
 
 import Controllers.ListTrainersController;
+import Controllers.LoginPageController;
 import Controllers.ParticipantPageController;
 import Exceptions.CouldNotWriteUsersException;
 import Exceptions.EmptyFieldException;
@@ -39,7 +40,7 @@ public class UserService<JSONArray> {
     /*List of participants*/
 
     private static List<Participant> participants;
-    private static Participant part,part1;
+    private static Participant part;
 
     static {
         participants=new ArrayList<Participant>();
@@ -323,6 +324,14 @@ public class UserService<JSONArray> {
         edit.setPrefWidth(200);
         edit.setPrefHeight(70);
         edit.setFont(Font.font(24));
+        edit.setOnAction(e-> {
+            try {
+                handleEditButton(application);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            System.out.println("removed");
+        });
 
 
         String participant1 = "";
@@ -396,4 +405,8 @@ public class UserService<JSONArray> {
         appl.remove(application);
     }
 
+    public static void handleEditButton(Application application) throws IOException {
+        handleDeleteButton(application);
+        LoginPageController.setParticipantPage();
+    }
 }

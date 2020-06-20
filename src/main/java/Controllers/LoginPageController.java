@@ -66,9 +66,9 @@ public class LoginPageController {
         }
     }
 
-    public void setParticipantPage() throws IOException {
+    public static void setParticipantPage() throws IOException {
         System.out.println("Yeeee participant 1");
-        Parent root= FXMLLoader.load((getClass().getClassLoader().getResource("Participant.fxml")));
+        Parent root= FXMLLoader.load((LoginPageController.class.getClassLoader().getResource("Participant.fxml")));
         System.out.println("Yeeee participant 222");
         Stage stage=new Stage();
         stage.setTitle("ParticipantPage");
