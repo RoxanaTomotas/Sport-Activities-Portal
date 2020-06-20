@@ -86,8 +86,6 @@ public class TrainerPageController implements Initializable {
     private TableColumn<Application, String> dateTableColumn;
     @FXML
     private TableColumn<Application, String> statusTableColumn;
-    @FXML
-    private Button updateButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -95,6 +93,13 @@ public class TrainerPageController implements Initializable {
         loadTableColumns();
     }
 
+    /*********************************************************************************************
+     *
+     *
+     *   This method updates the trainer's dates.
+     *
+     *
+     * *******************************************************************************************/
     public void updateSportDates(){
 
         List<Date> chosenDates = new ArrayList<Date>();
@@ -308,6 +313,13 @@ public class TrainerPageController implements Initializable {
         tableView.setItems(applicationTable);
     }
 
+    /*********************************************************************************************
+     *
+     *
+     *   This method makes the columns of the table view editable.
+     *
+     *
+     * *******************************************************************************************/
     private void editableColumns(){
 
         tableView.setEditable(true);
@@ -332,6 +344,13 @@ public class TrainerPageController implements Initializable {
                 e.getTableView().getItems().get(e.getTablePosition().getRow()).setChosenDate(e.getNewValue()));
     }
 
+    /*********************************************************************************************
+     *
+     *
+     *   This method changes the application's status.
+     *
+     *
+     * *******************************************************************************************/
     public void changeApplicationStatus(TableColumn.CellEditEvent edittedCell){
 
         Application applicationSelected = tableView.getSelectionModel().getSelectedItem();
