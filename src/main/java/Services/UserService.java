@@ -5,8 +5,10 @@ import Controllers.ParticipantPageController;
 import Exceptions.CouldNotWriteUsersException;
 import Exceptions.EmptyFieldException;
 import Exceptions.IncorrectLoginData;
-import Model.*;
+import Model.Application;
+import Model.Date;
 import Model.Participant;
+import Model.Trainer;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.geometry.Insets;
@@ -26,16 +28,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 /* ******************************************************************
  *
  *   User Service manages the users: both participants and trainers
  *
  * *******************************************************************/
-public class UserService {
+public class UserService<JSONArray> {
 
     /*List of participants*/
+
     private static List<Participant> participants;
-    private static Participant part;
+    private static Participant part,part1;
 
     static {
         participants=new ArrayList<Participant>();
@@ -56,6 +60,7 @@ public class UserService {
     int sw;
     public static ListTrainersController ltc;
     public static ParticipantPageController ppc;
+
 
 
     /*********************************************************************************************
@@ -309,6 +314,10 @@ public class UserService {
         delete.setPrefWidth(400);
         delete.setPrefHeight(70);
         delete.setFont(Font.font(24));
+        delete.setOnAction(e-> {
+            handleDeleteButton(application);
+            System.out.println("removed");
+        });
 
         Button edit = new Button("Edit");
         edit.setPrefWidth(200);
@@ -380,6 +389,11 @@ public class UserService {
         for (Application app : part.getApplications()) {
             ppc.getTilePane().getChildren().add(addApplication(app));
         }
-
     }
+
+    public static void handleDeleteButton(Application application) {
+        ArrayList<Application> appl= (ArrayList<Application>) part.getApplications();
+        appl.remove(application);
+    }
+
 }
