@@ -52,7 +52,7 @@
                      <children>
                         <ImageView fx:id="imageTrainers" fitHeight="380.0" fitWidth="607.0" layoutX="-5.0" layoutY="-9.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../../../../FIS_Proiect/src/main/resources/Image/Sport_19.jpg" />
+                              <Image url="@Image/Sport_19.jpg" />
                            </image>
                         </ImageView>
                          <Label fx:id="First_Name_Trainer" layoutX="270.0" layoutY="85.0" text="First Name:" />
@@ -132,8 +132,6 @@
                               <Font size="12.0" />
                            </font>
                         </Label>
-
-
                      </children></AnchorPane>
             </content>
           </Tab>

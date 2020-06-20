@@ -164,14 +164,9 @@ public class UserService {
 
         if (role == 1) {
             /*Participants' usernames are checked.*/
-            for (Participant participant : participants) {
+            for (Participant participant : participants)
                 if (Objects.equals(username, participant.getUsername()))
                     throw new EmptyFieldException();//change exception
-    private static void checkUsernameAlreadyExist(java.lang.String username) throws Exception {
-        for (Trainer trainer : trainers) {
-            if (Objects.equals(username, trainer.getUsername())) {
-                throw new CouldNotWriteUsersException();//change exception
-            }
         } else {
             /*Trainers' usernames are checked.*/
             for (Trainer trainer : trainers) {
@@ -310,8 +305,13 @@ public class UserService {
         persistParticipants();
     }
 
-    public static List<Participant> getParticipants(){
+    public static List<Participant> getParticipants() {
         return participants;
+    }
+
+    public static List<Trainer> getTrainers() {
+        return trainers;
+    }
 
     public static void injectppc(ParticipantPageController participantPageController) {
         ppc=participantPageController;
