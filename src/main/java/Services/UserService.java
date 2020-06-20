@@ -1,12 +1,15 @@
 package Services;
 
 import Controllers.ListTrainersController;
+import Controllers.LoginPageController;
 import Controllers.ParticipantPageController;
 import Exceptions.CouldNotWriteUsersException;
 import Exceptions.EmptyFieldException;
 import Exceptions.IncorrectLoginData;
-import Model.*;
+import Model.Application;
+import Model.Date;
 import Model.Participant;
+import Model.Trainer;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.geometry.Insets;
@@ -26,14 +29,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 /* ******************************************************************
  *
  *   User Service manages the users: both participants and trainers
  *
  * *******************************************************************/
-public class UserService {
+public class UserService<JSONArray> {
 
     /*List of participants*/
+
     private static List<Participant> participants;
     private static Participant part;
 
@@ -56,6 +61,7 @@ public class UserService {
     int sw;
     public static ListTrainersController ltc;
     public static ParticipantPageController ppc;
+
 
 
     /*********************************************************************************************
@@ -164,14 +170,9 @@ public class UserService {
 
         if (role == 1) {
             /*Participants' usernames are checked.*/
-            for (Participant participant : participants) {
+            for (Participant participant : participants)
                 if (Objects.equals(username, participant.getUsername()))
                     throw new EmptyFieldException();//change exception
-    private static void checkUsernameAlreadyExist(java.lang.String username) throws Exception {
-        for (Trainer trainer : trainers) {
-            if (Objects.equals(username, trainer.getUsername())) {
-                throw new CouldNotWriteUsersException();//change exception
-            }
         } else {
             /*Trainers' usernames are checked.*/
             for (Trainer trainer : trainers) {
@@ -312,6 +313,7 @@ public class UserService {
 
     public static List<Participant> getParticipants(){
         return participants;
+    }
 
     public static void injectppc(ParticipantPageController participantPageController) {
         ppc=participantPageController;
@@ -327,11 +329,23 @@ public class UserService {
         delete.setPrefWidth(400);
         delete.setPrefHeight(70);
         delete.setFont(Font.font(24));
+        delete.setOnAction(e-> {
+            handleDeleteButton(application);
+            System.out.println("removed");
+        });
 
         Button edit = new Button("Edit");
         edit.setPrefWidth(200);
         edit.setPrefHeight(70);
         edit.setFont(Font.font(24));
+        edit.setOnAction(e-> {
+            try {
+                handleEditButton(application);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            System.out.println("removed");
+        });
 
 
         String participant1 = "";
@@ -398,5 +412,15 @@ public class UserService {
         for (Application app : part.getApplications()) {
             ppc.getTilePane().getChildren().add(addApplication(app));
         }
+    }
+
+    public static void handleDeleteButton(Application application) {
+        ArrayList<Application> appl= (ArrayList<Application>) part.getApplications();
+        appl.remove(application);
+    }
+
+    public static void handleEditButton(Application application) throws IOException {
+        handleDeleteButton(application);
+        LoginPageController.setParticipantPage();
     }
 }
