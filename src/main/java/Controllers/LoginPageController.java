@@ -1,9 +1,7 @@
 package Controllers;
 
 import Exceptions.EmptyFieldException;
-import Model.User;
 import Services.UserService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,12 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.util.Objects;
 
 public class LoginPageController {
 
@@ -66,8 +61,8 @@ public class LoginPageController {
         }
     }
 
-    public void setParticipantPage() throws IOException {
-        Parent root= FXMLLoader.load((getClass().getClassLoader().getResource("Participant.fxml")));
+    public static void setParticipantPage() throws IOException {
+        Parent root= FXMLLoader.load((LoginPageController.class.getClassLoader().getResource("Participant.fxml")));
         Stage stage=new Stage();
         stage.setTitle("ParticipantPage");
         stage.setScene(new Scene(root, 600,400));

@@ -1,12 +1,15 @@
 package Services;
 
 import Controllers.ListTrainersController;
+import Controllers.LoginPageController;
 import Controllers.ParticipantPageController;
 import Exceptions.CouldNotWriteUsersException;
 import Exceptions.EmptyFieldException;
 import Exceptions.IncorrectLoginData;
-import Model.*;
+import Model.Application;
+import Model.Date;
 import Model.Participant;
+import Model.Trainer;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.geometry.Insets;
@@ -31,7 +34,7 @@ import java.util.Objects;
  *   User Service manages the users: both participants and trainers
  *
  * *******************************************************************/
-public class UserService {
+public class UserService<JSONArray> {
 
     /*List of participants*/
     private static List<Participant> participants;
@@ -305,7 +308,7 @@ public class UserService {
         persistParticipants();
     }
 
-    public static List<Participant> getParticipants() {
+    public static List<Participant> getParticipants(){
         return participants;
     }
 
@@ -327,11 +330,23 @@ public class UserService {
         delete.setPrefWidth(400);
         delete.setPrefHeight(70);
         delete.setFont(Font.font(24));
+        delete.setOnAction(e-> {
+            handleDeleteButton(application);
+            System.out.println("removed");
+        });
 
         Button edit = new Button("Edit");
         edit.setPrefWidth(200);
         edit.setPrefHeight(70);
         edit.setFont(Font.font(24));
+        edit.setOnAction(e-> {
+            try {
+                handleEditButton(application);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            System.out.println("removed");
+        });
 
 
         String participant1 = "";
@@ -398,5 +413,15 @@ public class UserService {
         for (Application app : part.getApplications()) {
             ppc.getTilePane().getChildren().add(addApplication(app));
         }
+    }
+
+    public static void handleDeleteButton(Application application) {
+        ArrayList<Application> appl= (ArrayList<Application>) part.getApplications();
+        appl.remove(application);
+    }
+
+    public static void handleEditButton(Application application) throws IOException {
+        handleDeleteButton(application);
+        LoginPageController.setParticipantPage();
     }
 }
