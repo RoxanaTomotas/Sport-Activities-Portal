@@ -6,20 +6,23 @@ package Model;
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+import javafx.scene.control.Control;
+import javafx.scene.control.SkinBase;
+
 import java.util.Objects;
 
 public class Application {
 
     protected String participant; //The implied participant
-    protected java.lang.String trainer; //The implied trainer
-    protected java.lang.String sport; //The implied sport
-    protected java.lang.String chosenDate; //The choosen date
+    protected String trainer; //The implied trainer
+    protected String sport; //The implied sport
+    protected String chosenDate; //The choosen date
     protected int status;
 
     public Application() {
     }
 
-    public Application(String participant, java.lang.String trainer, java.lang.String sport, java.lang.String chosenDate, int status) {
+    public Application(String participant, String trainer, String sport, String chosenDate, int status) {
         this.participant = participant;
         this.trainer = trainer;
         this.sport = sport;
@@ -31,15 +34,13 @@ public class Application {
         return participant;
     }
 
-    public java.lang.String getTrainer() {
+    public String getTrainer() {
         return trainer;
     }
 
-    public java.lang.String getSport() {
-        return sport;
-    }
+    public String getSport() { return sport; }
 
-    public java.lang.String getChosenDate() {
+    public String getChosenDate() {
         return chosenDate;
     }
 
@@ -51,15 +52,15 @@ public class Application {
         this.participant = participant;
     }
 
-    public void setTrainer(java.lang.String trainer) {
+    public void setTrainer(String trainer) {
         this.trainer = trainer;
     }
 
-    public void setSport(java.lang.String sport) {
+    public void setSport(String sport) {
         this.sport = sport;
     }
 
-    public void setChosenDate(java.lang.String chosenDate) {
+    public void setChosenDate(String chosenDate) {
         this.chosenDate = chosenDate;
     }
 
@@ -94,6 +95,5 @@ public class Application {
                 ", status=" + status +
                 '}';
     }
-
 
 }

@@ -1,6 +1,7 @@
 package Services;
 
 import Controllers.ListTrainersController;
+import Controllers.ParticipantPageController;
 import Exceptions.CouldNotWriteUsersException;
 import Exceptions.EmptyFieldException;
 import Exceptions.IncorrectLoginData;
@@ -8,10 +9,14 @@ import Model.*;
 import Model.Participant;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import org.apache.commons.io.FileUtils;
-
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,6 +35,7 @@ public class UserService {
 
     /*List of participants*/
     private static List<Participant> participants;
+    private static Participant part;
 
     static {
         participants = new ArrayList<Participant>();
@@ -48,7 +54,8 @@ public class UserService {
     /*Path for trainers: trainers_PATH*/
     private static final Path trainers_PATH = FileSystemService.getPathToFile("config", "trainers.json");
     int sw;
-    private static ListTrainersController ltc;
+    public static ListTrainersController ltc;
+    public static ParticipantPageController ppc;
 
 
     /*********************************************************************************************
@@ -160,6 +167,10 @@ public class UserService {
             for (Participant participant : participants) {
                 if (Objects.equals(username, participant.getUsername()))
                     throw new EmptyFieldException();//change exception
+    private static void checkUsernameAlreadyExist(java.lang.String username) throws Exception {
+        for (Trainer trainer : trainers) {
+            if (Objects.equals(username, trainer.getUsername())) {
+                throw new CouldNotWriteUsersException();//change exception
             }
         } else {
             /*Trainers' usernames are checked.*/
@@ -206,8 +217,10 @@ public class UserService {
         if(role.equals("Participant")) {
             for (Participant participant : participants) {
                 if (Objects.equals(username, participant.getUsername())) {
-                    if(Objects.equals(password, participant.getPassword()))
+                    if(Objects.equals(password, participant.getPassword())) {
                         ListTrainersController.setActiveParticipant(participant);
+                        part = participant;
+                    }
                     sw=1;
                     if (!Objects.equals(password, participant.getPassword()))
                         throw new IncorrectLoginData();
@@ -299,5 +312,91 @@ public class UserService {
 
     public static List<Participant> getParticipants(){
         return participants;
+
+    public static void injectppc(ParticipantPageController participantPageController) {
+        ppc=participantPageController;
+    }
+
+    private static GridPane addApplication(Application application) {
+        GridPane pane = new GridPane();
+        pane.setPrefWidth(600);
+        pane.setPrefHeight(300);
+        pane.setStyle("-fx-background-color: #FFFF99;");
+
+        Button delete = new Button("Delete");
+        delete.setPrefWidth(400);
+        delete.setPrefHeight(70);
+        delete.setFont(Font.font(24));
+
+        Button edit = new Button("Edit");
+        edit.setPrefWidth(200);
+        edit.setPrefHeight(70);
+        edit.setFont(Font.font(24));
+
+
+        String participant1 = "";
+        participant1 += application.getParticipant();
+        Label participant2 = new Label("Participant: "+participant1);
+        participant2.setPrefWidth(400);
+        participant2.setPrefHeight(55);
+        participant2.setFont(Font.font(17));
+
+        String trainer1 = "";
+        trainer1 += application.getTrainer();
+        Label trainer2 = new Label("Trainer: "+trainer1);
+        trainer2.setPrefWidth(400);
+        trainer2.setPrefHeight(55);
+        trainer2.setFont(Font.font(17));
+
+        String sport1 = "";
+        sport1 += application.getSport();
+        Label sport2 = new Label("Sport: "+sport1);
+        sport2.setPrefWidth(400);
+        sport2.setPrefHeight(55);
+        sport2.setFont(Font.font(17));
+
+        String chosenDate1 = "";
+        chosenDate1 += application.getChosenDate();
+        Label chosenDate2 = new Label("Date: "+chosenDate1);
+        chosenDate2.setPrefWidth(500);
+        chosenDate2.setPrefHeight(55);
+        chosenDate2.setFont(Font.font(17));
+
+        String status1 = "";
+        status1 += application.getStatus();
+        Label status2 = new Label("Status: "+status1);
+        status2.setPrefWidth(400);
+        status2.setPrefHeight(55);
+        status2.setFont(Font.font(17));
+
+
+        pane.setHgap(30);
+
+        GridPane.setMargin(participant2, new Insets(15, 15, 5, 15));
+        GridPane.setMargin(trainer2, new Insets(5, 15, 5, 15));
+        GridPane.setMargin(sport2, new Insets(5, 15, 5, 15));
+        GridPane.setMargin(chosenDate2, new Insets(5, 15, 5, 15));
+        GridPane.setMargin(status2, new Insets(5, 15, 5, 15));
+        GridPane.setMargin(delete, new Insets(0,200,0,0));
+        pane.setPadding(new Insets(10,10,10,10));
+
+        pane.setAlignment(Pos.BASELINE_LEFT);
+        pane.add(participant2, 0, 0);
+        pane.add(trainer2, 0, 1);
+        pane.add(sport2, 0, 2);
+        pane.add(chosenDate2, 0, 3);
+        pane.add(status2, 0, 4);
+
+        pane.add(edit, 0, 5);
+        pane.add(delete, 1, 5);
+
+
+        return pane;
+    }
+
+    public static void addApplicationAdmin() {
+        for (Application app : part.getApplications()) {
+            ppc.getTilePane().getChildren().add(addApplication(app));
+        }
     }
 }
