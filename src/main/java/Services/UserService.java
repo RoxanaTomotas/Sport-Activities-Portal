@@ -38,14 +38,14 @@ public class UserService {
     private static Participant part;
 
     static {
-        participants=new ArrayList<Participant>();
+        participants = new ArrayList<Participant>();
     }
 
     /*List of trainers*/
     private static List<Trainer> trainers;
 
     static {
-        trainers=new ArrayList<Trainer>();
+        trainers = new ArrayList<Trainer>();
     }
 
     /*Path for participants: participants_PATH*/
@@ -93,11 +93,11 @@ public class UserService {
      *   This method adds the participant.
      *
      * **********************************************/
-    public static void addParticipant(String firstName, String lastName, String username, String password, String university, String specialization, String uniqueID, String studyYear , boolean healthAppropval)throws Exception {
+    public static void addParticipant(String firstName, String lastName, String username, String password, String university, String specialization, String uniqueID, String studyYear, boolean healthAppropval) throws Exception {
 
-        checkEmptyField(username,password);
-        checkUsernameAlreadyExist(username);
-        participants.add(new Participant(firstName, lastName,  username,  encodePassword(username, password),  university,  specialization,  uniqueID,  studyYear,  healthAppropval,null));
+        checkEmptyField(username, password);
+        checkUsernameAlreadyExist(username,1);
+        participants.add(new Participant(firstName, lastName, username, encodePassword(username, password), university, specialization, uniqueID, studyYear, healthAppropval, null));
         persistParticipants();
     }
 
@@ -107,13 +107,12 @@ public class UserService {
      *   This method adds the trainer.
      *
      * **********************************************/
-    public static void addTrainer(java.lang.String firstName, java.lang.String lastName, java.lang.String username, java.lang.String password, java.lang.String university, List<Application> application, java.lang.String sports, List<Date> dates)throws Exception {
+    public static void addTrainer(java.lang.String firstName, java.lang.String lastName, java.lang.String username, java.lang.String password, java.lang.String university, List<Application> application, java.lang.String sports, List<Date> dates) throws Exception {
 
-        checkEmptyField(username,password);
-        checkUsernameAlreadyExist(username);
-        trainers.add(new Trainer(firstName, lastName,  username,   encodePassword(username, password),  university, application, sports, dates));
+        checkEmptyField(username, password);
+        checkUsernameAlreadyExist(username,0);
+        trainers.add(new Trainer(firstName, lastName, username, encodePassword(username, password), university, application, sports, dates));
         persistTrainers();
-        System.out.println("Metoda AddTrainer");
     }
 
 
@@ -161,13 +160,27 @@ public class UserService {
      *
      *
      * *****************************************************/
+    private static void checkUsernameAlreadyExist(java.lang.String username, int role) throws EmptyFieldException {
+
+        if (role == 1) {
+            /*Participants' usernames are checked.*/
+            for (Participant participant : participants) {
+                if (Objects.equals(username, participant.getUsername()))
+                    throw new EmptyFieldException();//change exception
     private static void checkUsernameAlreadyExist(java.lang.String username) throws Exception {
         for (Trainer trainer : trainers) {
             if (Objects.equals(username, trainer.getUsername())) {
                 throw new CouldNotWriteUsersException();//change exception
             }
+        } else {
+            /*Trainers' usernames are checked.*/
+            for (Trainer trainer : trainers) {
+                if (Objects.equals(username, trainer.getUsername())) {
+                    throw new EmptyFieldException();//change exception
+                }
             }
         }
+    }
 
 
     /**********************************************
@@ -177,7 +190,8 @@ public class UserService {
      * **********************************************/
     private static void checkEmptyField(java.lang.String username, java.lang.String password) throws EmptyFieldException {
 
-        if(username.equals("") || password.equals("")) throw new EmptyFieldException();
+        if(username.equals("") || password.equals(""))
+            throw new EmptyFieldException();
     }
 
 
@@ -296,6 +310,9 @@ public class UserService {
         persistParticipants();
     }
 
+    public static List<Participant> getParticipants(){
+        return participants;
+
     public static void injectppc(ParticipantPageController participantPageController) {
         ppc=participantPageController;
     }
@@ -381,6 +398,5 @@ public class UserService {
         for (Application app : part.getApplications()) {
             ppc.getTilePane().getChildren().add(addApplication(app));
         }
-
     }
 }

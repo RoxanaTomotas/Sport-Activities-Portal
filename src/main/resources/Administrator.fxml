@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="Administrator" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdministratorPageController">
    <children>
-      <TabPane fx:id="Administrator" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="AdministratorTabPane" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="tabRegistratinParticipants" text="Registration: Participants">
             <content>
@@ -141,18 +141,17 @@
               <content>
                 <AnchorPane fx:id="PaneContracts" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="image2" fitHeight="299.0" fitWidth="786.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Image/Sport_17.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="304.0" fitWidth="607.0" layoutX="-3.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Image/Sport_17.jpg" />
-                           </image>
-                        </ImageView>
-                        <ListView fx:id="ListViewContracts" layoutX="-3.0" layoutY="41.0" prefHeight="219.0" prefWidth="608.0" />
-                        <ScrollBar fx:id="scrollBarContracts" layoutX="586.0" layoutY="43.0" orientation="VERTICAL" prefHeight="216.0" prefWidth="14.0" />
+                        <BorderPane fx:id="borderPane" prefHeight="371.0" prefWidth="600.0">
+                           <top>
+                              <TableView fx:id="tableView" prefHeight="365.0" prefWidth="599.0" BorderPane.alignment="CENTER">
+                                <columns>
+                                  <TableColumn fx:id="participantTableColumn" prefWidth="152.0" text="Participant" />
+                                  <TableColumn fx:id="trainerTableColumn" minWidth="0.0" prefWidth="136.0" text="Trainer" /> 
+                                  <TableColumn fx:id="sportTableColumn" prefWidth="176.0" text="Sport" />
+                                    <TableColumn fx:id="dateTableColumn" prefWidth="131.0" text="Date" />
+                                </columns>
+                              </TableView>
+                           </top></BorderPane>
                      </children></AnchorPane>
               </content>
             </Tab>
