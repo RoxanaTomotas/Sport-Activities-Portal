@@ -27,7 +27,7 @@ public class Application {
         this.status = status;
     }
 
-    public String getParticipant() {
+    public java.lang.String getParticipant() {
         return participant;
     }
 
@@ -47,7 +47,7 @@ public class Application {
         return status;
     }
 
-    public void setParticipant(String participant) {
+    public void setParticipant(java.lang.String participant) {
         this.participant = participant;
     }
 

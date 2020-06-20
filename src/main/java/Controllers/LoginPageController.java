@@ -1,5 +1,6 @@
 package Controllers;
 
+import Exceptions.EmptyFieldException;
 import Model.User;
 import Services.UserService;
 import javafx.event.ActionEvent;
@@ -36,29 +37,26 @@ public class LoginPageController {
         choiceBox.setValue("Admin");
     }
 
-    public void handleLoginAction() {
+    public void handleLoginAction() throws EmptyFieldException{
 
-        System.out.println("Yeeee 1");
         try {
-            System.out.println("Yeeee 2");
-
             UserService.checkLoginCredentials(usernameField.getText(),passwordField.getText(),choiceBox.getValue().toString());
 
             Stage stage = (Stage) loginB.getScene().getWindow();
-            System.out.println("Yeeee 3");
             stage.close();
-            System.out.println("Yeeee 4");
 
             if(((String)choiceBox.getValue()).equals("Admin")) {
-                // if username si password=admin
-                setAdministratorPage();
-                System.out.println("Yeeee 5");
+                if(usernameField.getText().equals("Admin") && passwordField.getText().equals("Admin")){
+                    setAdministratorPage();
+                }
+                else
+                    throw new EmptyFieldException();
             }
+
             else
             if(((String)choiceBox.getValue()).equals("Trainer"))
                 setTrainerPage();
             else {
-                System.out.println("Yeeee participant");
                 setParticipantPage();
             }
         } catch (Exception e) {
@@ -67,9 +65,7 @@ public class LoginPageController {
     }
 
     public void setParticipantPage() throws IOException {
-        System.out.println("Yeeee participant 1");
         Parent root= FXMLLoader.load((getClass().getClassLoader().getResource("Participant.fxml")));
-        System.out.println("Yeeee participant 222");
         Stage stage=new Stage();
         stage.setTitle("ParticipantPage");
         stage.setScene(new Scene(root, 600,400));
@@ -93,7 +89,6 @@ public class LoginPageController {
         stage.setScene(new Scene(root, 600, 400));
         stage.setFullScreen(false);
         stage.showAndWait();
-        System.out.println("metoda SetAdministratorPage");
     }
 
 }

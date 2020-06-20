@@ -2,12 +2,17 @@ package Controllers;
 
 import Model.Application;
 import Model.Date;
+import Model.Participant;
 import Services.UserService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javax.swing.*;
@@ -15,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.net.URL;
 
 public class AdministratorPageController {
 
@@ -124,10 +130,22 @@ public class AdministratorPageController {
     private TextField textFieldUsernameTrainer;
     @FXML
     private TextField textFieldPasswordTrainer;
+    @FXML
+    private TableView<Application> tableView;
+    @FXML
+    private TableColumn<Application, String> participantTableColumn;
+    @FXML
+    private TableColumn<Application, String> trainerTableColumn;
+    @FXML
+    private TableColumn<Application, String> sportTableColumn;
+    @FXML
+    private TableColumn<Application, String> dateTableColumn;
 
     public void initialize() {
         choiceBoxYear.getItems().addAll("1","2","3","4","5","6","N/A");
         choiceBoxYear.setValue("N/A");
+        initTableColumns();
+        loadTableColumns();
     }
 
     /*********************************************************************************************
@@ -181,10 +199,9 @@ public class AdministratorPageController {
     public void handleTrainerRegisterAction() {
 
         try {
-
             String chosenSport="";
             List<Date> chosenDates = new ArrayList<Date>();
-            System.out.println("Metoda handleTrainerRegisterAction 1");
+
             if(checkBoxFitness.isSelected())
                 chosenSport = "fitness";
 
@@ -203,7 +220,6 @@ public class AdministratorPageController {
             if(checkBoxFotbal.isSelected())
                 chosenSport = "fotbal";
 
-            System.out.println("Metoda handleTrainerRegisterAction 2");
             if(monday_8_30_10.isSelected())
             {
                 chosenDates.add(new Date("luni", 8,10,30,0));
@@ -308,7 +324,7 @@ public class AdministratorPageController {
             {
                 chosenDates.add(new Date("vineri", 16,18,30,0));
             }
-            System.out.println("Metoda handleTrainerRegisterAction 3");
+
             UserService.addTrainer(textFieldFirstNameTrainer.getText(),
                     textFieldLastNameTrainer.getText(),
                     textFieldUsernameTrainer.getText(),
@@ -317,7 +333,6 @@ public class AdministratorPageController {
                     null,
                     chosenSport,
                     chosenDates);
-            System.out.println("S-a scris in fisier trainerul.");
 
             monday_8_30_10.setSelected(false);
             tuesday_8_30_10.setSelected(false);
@@ -344,10 +359,26 @@ public class AdministratorPageController {
             wednesday_16_30_18.setSelected(false);
             thursday_16_30_18.setSelected(false);
             friday_16_30_18.setSelected(false);
-
         } catch (Exception e) {
         }
     }
+
+    /*********************************************************************************************
+     *
+     *
+     *   This method initializes the contracts table.
+     *
+     *
+     * *******************************************************************************************/
+    public void initTableColumns()
+    {
+        participantTableColumn.setCellValueFactory(new PropertyValueFactory<>("Participant"));
+        trainerTableColumn.setCellValueFactory(new PropertyValueFactory<>("Trainer"));
+        sportTableColumn.setCellValueFactory(new PropertyValueFactory<>("Sport"));
+        dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("ChosenDate"));
+        editableColumns();
+    }
+
 
     /*********************************************************************************************
      *
@@ -356,9 +387,46 @@ public class AdministratorPageController {
      *
      *
      * *******************************************************************************************/
-    void manageContracts()
+    public void loadTableColumns()
     {
+        ObservableList<Application> applicationTable = FXCollections.observableArrayList();
+        List<Participant> participants;
+        List<Application> participantApplication;
 
+        participants = UserService.getParticipants();
+
+        for (Participant participant: participants) {
+            participantApplication = participant.getApplications();
+            if(!(participantApplication.isEmpty()))
+                for(Application application : participantApplication) {
+                        System.out.println(application.getStatus() + application.getSport());
+                        if (application.getStatus() == 2) //Accepted => Contract
+                        {
+                            applicationTable.add(application);
+                        }
+                }
+        }
+
+        tableView.setItems(applicationTable);
+    }
+
+    private void editableColumns(){
+
+        participantTableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        participantTableColumn.setOnEditCommit(e ->
+                e.getTableView().getItems().get(e.getTablePosition().getRow()).setParticipant(e.getNewValue()));
+
+        trainerTableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        trainerTableColumn.setOnEditCommit(e ->
+                e.getTableView().getItems().get(e.getTablePosition().getRow()).setTrainer(e.getNewValue()));
+
+        sportTableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        sportTableColumn.setOnEditCommit(e ->
+                e.getTableView().getItems().get(e.getTablePosition().getRow()).setSport(e.getNewValue()));
+
+        dateTableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        dateTableColumn.setOnEditCommit(e ->
+                e.getTableView().getItems().get(e.getTablePosition().getRow()).setChosenDate(e.getNewValue()));
     }
 
 }
