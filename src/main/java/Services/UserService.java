@@ -106,6 +106,7 @@ public class UserService {
         checkUsernameAlreadyExist(username);
         trainers.add(new Trainer(firstName, lastName,  username,   encodePassword(username, password),  university, application, sports, dates));
         persistTrainers();
+        System.out.println("Metoda AddTrainer");
     }
 
 

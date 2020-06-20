@@ -87,14 +87,13 @@ public class LoginPageController {
     }
 
     public void setAdministratorPage() throws IOException {
-        System.out.println("Yeeee 6");
         Parent root= FXMLLoader.load((getClass().getClassLoader().getResource("Administrator.fxml")));
-        System.out.println("Yeeee 100");
         Stage stage = new Stage();
         stage.setTitle("Administrator");
         stage.setScene(new Scene(root, 600, 400));
         stage.setFullScreen(false);
         stage.showAndWait();
+        System.out.println("metoda SetAdministratorPage");
     }
 
 }
