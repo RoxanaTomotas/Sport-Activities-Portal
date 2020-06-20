@@ -50,30 +50,88 @@
             <content>
               <AnchorPane fx:id="PaneTrainers" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="img2" fitHeight="379.0" fitWidth="626.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageTrainers" fitHeight="380.0" fitWidth="607.0" layoutX="-5.0" layoutY="-9.0" pickOnBounds="true">
                            <image>
-                              <Image url="@Image/Sport_12.jpg" />
+                              <Image url="@../../../../FIS_Proiect/src/main/resources/Image/Sport_19.jpg" />
                            </image>
                         </ImageView>
-                         <Label fx:id="fn" layoutX="270.0" layoutY="30.0" text="First Name:" />
-                         <Label fx:id="ln" layoutX="270.0" layoutY="60.0" text="Last Name:" />
-                         <Label fx:id="add" layoutX="270.0" layoutY="90.0" text="Address:" />
-                         <Label fx:id="u" layoutX="270.0" layoutY="120.0" text="University:" />
-                         <Label fx:id="e" layoutX="270.0" layoutY="150.0" text="Username:" />
-                         <Label fx:id="p" layoutX="270.0" layoutY="180.0" text="Password:" />
-                         <TextField fx:id="textFieldFirstNameTrainer" layoutX="345.0" layoutY="25.0" />
-                         <TextField fx:id="textFieldLastNameTrainer" layoutX="345.0" layoutY="55.0" />
-                         <TextField fx:id="textFieldAddressTrainer" layoutX="345.0" layoutY="85.0" />
-                         <TextField fx:id="textFieldUniveristyTrainer" layoutX="345.0" layoutY="115.0" />
-                         <TextField fx:id="textFieldUsernameTrainer" layoutX="345.0" layoutY="145.0" />
-                         <TextField fx:id="textFieldPasswordTrainer" layoutX="345.0" layoutY="175.0" />
-                         <Button fx:id="buttonTrainerRegister" layoutX="348.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleTrainerRegisterAction" prefHeight="25.0" prefWidth="144.0" text="Register" />
-                        <CheckBox fx:id="checkBoxFitness" layoutX="340.0" layoutY="220.0" mnemonicParsing="false" text="Fitness" />
-                        <CheckBox fx:id="checkBoxAerobic" layoutX="340.0" layoutY="250.0" mnemonicParsing="false" text="Aerobic" />
-                        <CheckBox fx:id="checkBoxCulturism" layoutX="430.0" layoutY="220.0" mnemonicParsing="false" text="Culturism" />
-                        <CheckBox fx:id="checkBoxJogging" layoutX="340.0" layoutY="280.0" mnemonicParsing="false" text="Jogging" />
-                        <CheckBox fx:id="checkBoxFotbal" layoutX="430.0" layoutY="250.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="55.0" text="Fotbal" />
-                        <CheckBox fx:id="checkBoxSwimming" layoutX="430.0" layoutY="280.0" mnemonicParsing="false" text="Swimming" />
+                         <Label fx:id="First_Name_Trainer" layoutX="270.0" layoutY="85.0" text="First Name:" />
+                         <Label fx:id="Last_Name_Trainer" layoutX="270.0" layoutY="115.0" text="Last Name:" />
+                         <Label fx:id="University_Trainer" layoutX="270.0" layoutY="145.0" text="University:" />
+                         <Label fx:id="Username_Trainer" layoutX="270.0" layoutY="175.0" text="Username:" />
+                         <Label fx:id="Password_Trainer" layoutX="270.0" layoutY="205.0" text="Password:" />
+
+                         <TextField fx:id="textFieldFirstNameTrainer" layoutX="345.0" layoutY="80.0" />
+                         <TextField fx:id="textFieldLastNameTrainer" layoutX="345.0" layoutY="110.0" />
+                         <TextField fx:id="textFieldUniveristyTrainer" layoutX="345.0" layoutY="140.0" />
+                         <TextField fx:id="textFieldUsernameTrainer" layoutX="345.0" layoutY="170.0" />
+                         <TextField fx:id="textFieldPasswordTrainer" layoutX="345.0" layoutY="200.0" />
+
+                         <Button fx:id="buttonTrainerRegister" layoutX="81.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleTrainerRegisterAction" prefHeight="25.0" prefWidth="144.0" text="Register" />
+
+                        <CheckBox fx:id="checkBoxFitness" layoutX="340.0" layoutY="240.0" mnemonicParsing="false" text="Fitness" />
+                        <CheckBox fx:id="checkBoxAerobic" layoutX="340.0" layoutY="300.0" mnemonicParsing="false" text="Aerobic" />
+                        <CheckBox fx:id="checkBoxCulturism" layoutX="430.0" layoutY="240.0" mnemonicParsing="false" text="Culturism" />
+                        <CheckBox fx:id="checkBoxJogging" layoutX="340.0" layoutY="270.0" mnemonicParsing="false" text="Jogging" />
+                        <CheckBox fx:id="checkBoxFotbal" layoutX="430.0" layoutY="270.0" mnemonicParsing="false" text="Fotbal" />
+                        <CheckBox fx:id="checkBoxSwimming" layoutX="430.0" layoutY="300.0" mnemonicParsing="false" text="Swimming" />
+
+                         <Label fx:id="monday" layoutX="33.0" layoutY="95.0" text="Monday" />
+                         <Label fx:id="tuesday" layoutX="33.0" layoutY="125.0" text="Tuesday" />
+                         <Label fx:id="wednesday" layoutX="33.0" layoutY="155.0" text="Wednesday" />
+                         <Label fx:id="thursday" layoutX="33.0" layoutY="185.0" text="Thursday" />
+                         <Label fx:id="friday" layoutX="33.0" layoutY="215.0" text="Friday" />
+
+                         <CheckBox fx:id="monday_8_30_10" layoutX="95.0" layoutY="95.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="tuesday_8_30_10" layoutX="95.0" layoutY="125.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="wednesday_8_30_10" layoutX="95.0" layoutY="155.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="thursday_8_30_10" layoutX="95.0" layoutY="185.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="friday_8_30_10" layoutX="95.0" layoutY="215.0" mnemonicParsing="false" text="" />
+
+                         <CheckBox fx:id="monday_10_30_12" layoutX="125.0" layoutY="95.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="tuesday_10_30_12" layoutX="125.0" layoutY="125.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="wednesday_10_30_12" layoutX="125.0" layoutY="155.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="thursday_10_30_12" layoutX="125.0" layoutY="185.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="friday_10_30_12" layoutX="125.0" layoutY="215.0" mnemonicParsing="false" text="" />
+
+                         <CheckBox fx:id="monday_12_30_14" layoutX="155.0" layoutY="95.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="tuesday_12_30_14" layoutX="155.0" layoutY="125.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="wednesday_12_30_14" layoutX="155.0" layoutY="155.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="thursday_12_30_14" layoutX="155.0" layoutY="185.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="friday_12_30_14" layoutX="155.0" layoutY="215.0" mnemonicParsing="false" text="" />
+
+                         <CheckBox fx:id="monday_14_30_16" layoutX="185.0" layoutY="95.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="tuesday_14_30_16" layoutX="185.0" layoutY="125.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="wednesday_14_30_16" layoutX="185.0" layoutY="155.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="thursday_14_30_16" layoutX="185.0" layoutY="185.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="friday_14_30_16" layoutX="185.0" layoutY="215.0" mnemonicParsing="false" text="" />
+
+                         <CheckBox fx:id="monday_16_30_18" layoutX="215.0" layoutY="95.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="tuesday_16_30_18" layoutX="215.0" layoutY="125.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="wednesday_16_30_18" layoutX="215.0" layoutY="155.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="thursday_16_30_18" layoutX="215.0" layoutY="185.0" mnemonicParsing="false" text="" />
+                         <CheckBox fx:id="friday_16_30_18" layoutX="215.0" layoutY="215.0" mnemonicParsing="false" text="" />
+                        <Label fx:id="firstHour" layoutX="90.0" layoutY="70.0" text="8:30" />
+                        <Label fx:id="secondHour" layoutX="120.0" layoutY="70.0" prefHeight="17.0" prefWidth="31.0" text="10:00">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="thirdHour" layoutX="150.0" layoutY="70.0" text="12:00">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="fourthHour" layoutX="180.0" layoutY="70.0" text="14:00">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="fifthHour" layoutX="210.0" layoutY="70.0" text="16:00">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
 
 
                      </children></AnchorPane>
@@ -83,7 +141,7 @@
               <content>
                 <AnchorPane fx:id="PaneContracts" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="image" fitHeight="299.0" fitWidth="786.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image2" fitHeight="299.0" fitWidth="786.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Image/Sport_17.jpg" />
                            </image>
