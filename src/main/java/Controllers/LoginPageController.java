@@ -18,15 +18,15 @@ public class LoginPageController {
 
     public static String username;
     @FXML
-    private Button loginB;
+    public Button loginB;
     @FXML
-    private TextField usernameField;
+    public TextField usernameField;
     @FXML
-    private PasswordField passwordField;
+    public PasswordField passwordField;
     @FXML
-    private Text text;
+    public Text text;
     @FXML
-    private ChoiceBox<Object> choiceBox;
+    public ChoiceBox<Object> choiceBox;
 
     public void initialize() {
         choiceBox.getItems().addAll("Admin","Participant","Trainer");
@@ -57,7 +57,7 @@ public class LoginPageController {
                 setParticipantPage();
             }
         } catch (Exception e) {
-    //          text.setText(e.getMessage());
+            //          text.setText(e.getMessage());
         }
     }
 

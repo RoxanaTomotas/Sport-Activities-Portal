@@ -38,8 +38,8 @@ public class UserService {
 
 
     /*List of participants*/
-    private static List<Participant> participants;
-    private static Participant part;
+    public static List<Participant> participants;
+    public static Participant part;
     private static GridPane gridPane;
 
     static {
@@ -47,14 +47,11 @@ public class UserService {
     }
 
     /*List of trainers*/
-    private static List<Trainer> trainers;
+    public static List<Trainer> trainers = new ArrayList<Trainer>();
 
-    static {
-        trainers = new ArrayList<Trainer>();
-    }
 
     /*Path for participants: participants_PATH*/
-    private static final Path participants_PATH = FileSystemService.getPathToFile("config", "participants.json");
+    public static final Path participants_PATH = FileSystemService.getPathToFile("config", "participants.json");
 
     /*Path for trainers: trainers_PATH*/
     private static final Path trainers_PATH = FileSystemService.getPathToFile("config", "trainers.json");
@@ -165,7 +162,7 @@ public class UserService {
      *
      *
      * *****************************************************/
-    private static void checkUsernameAlreadyExist(java.lang.String username, int role) throws EmptyFieldException {
+    public static void checkUsernameAlreadyExist(java.lang.String username, int role) throws EmptyFieldException {
 
         if (role == 1) {
             /*Participants' usernames are checked.*/
@@ -188,7 +185,7 @@ public class UserService {
      *  This method checks if an attribute is empty.
      *
      * **********************************************/
-    private static void checkEmptyField(java.lang.String username, java.lang.String password) throws EmptyFieldException {
+    public static void checkEmptyField(java.lang.String username, java.lang.String password) throws EmptyFieldException {
 
         if(username.equals("") || password.equals(""))
             throw new EmptyFieldException();
@@ -238,7 +235,7 @@ public class UserService {
      *  This method encodes the password
      *
      * ********************************************************/
-    private static java.lang.String encodePassword(java.lang.String salt, java.lang.String password) {
+    public static java.lang.String encodePassword(java.lang.String salt, java.lang.String password) {
 
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));

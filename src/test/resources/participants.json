@@ -1,0 +1,14 @@
+[
+  {
+    "firstName": "lidia",
+    "lastName": "szmecskas",
+    "username": "lidia.szm",
+    "password":  "lidia",
+    "university": "UPT",
+    "specialization": "AC",
+    "uniqueID": "12",
+    "studyYear": "2",
+    "healthAppropval": 1,
+    "applications": []
+  }
+]
