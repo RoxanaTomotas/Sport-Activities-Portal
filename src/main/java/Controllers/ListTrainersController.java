@@ -49,6 +49,11 @@ public class ListTrainersController {
         participant=p;
     }
 
+    public static String setStringActiveParticipant(Participant p) {
+        setActiveParticipant(p);
+        return p+"";
+    }
+
     public ChoiceBox getTrainer() {
         return trainer;
     }

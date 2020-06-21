@@ -43,7 +43,7 @@ public class ApplicationService {
         UserService.sentParticiapnt(participant,new Application(participant,  trainer,  sport,  chosenDate, status ));
     }
 
-    private static void persistApplication() {
+    public static void persistApplication() {
 
         try {
 

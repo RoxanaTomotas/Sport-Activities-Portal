@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class Application {
 
-    protected String participant; //The implied participant
+    public static String participant;
     protected String trainer; //The implied trainer
     protected String sport; //The implied sport
     protected String chosenDate; //The choosen date
@@ -30,7 +30,7 @@ public class Application {
         this.status = status;
     }
 
-    public java.lang.String getParticipant() {
+    public static java.lang.String getParticipant() {
         return participant;
     }
 
