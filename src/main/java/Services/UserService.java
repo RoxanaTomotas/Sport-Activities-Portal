@@ -34,11 +34,13 @@ import java.util.Objects;
  *   User Service manages the users: both participants and trainers
  *
  * *******************************************************************/
-public class UserService<JSONArray> {
+public class UserService {
+
 
     /*List of participants*/
     private static List<Participant> participants;
     private static Participant part;
+    private static GridPane gridPane;
 
     static {
         participants = new ArrayList<Participant>();
@@ -405,8 +407,12 @@ public class UserService<JSONArray> {
         pane.add(edit, 0, 5);
         pane.add(delete, 1, 5);
 
-
+        setGridPane(pane);
         return pane;
+    }
+
+    public static void setGridPane(GridPane pane) {
+        gridPane=pane;
     }
 
     public static void addApplicationAdmin() {

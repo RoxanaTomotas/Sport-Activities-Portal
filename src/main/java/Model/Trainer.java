@@ -14,6 +14,7 @@ public class Trainer {
 
     protected String firstName; //First name of the trainer
     protected String lastName; //Last name of the trainer
+    protected String username; //Trainer's username
     protected String password; //Trainer's password
     protected String university; //Trainer's university
     protected List<Application> applications; //Trainer's contracts
@@ -117,7 +118,6 @@ public class Trainer {
         return Objects.hash(firstName, lastName, username, password, university, applications, sports, dates);
     }
 
-    protected String username; //Trainer's username
 
     @Override
     public String toString() {
