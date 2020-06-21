@@ -198,6 +198,7 @@ public class AdministratorPageController {
      * *******************************************************************************************/
     public void handleTrainerRegisterAction() {
 
+
         try {
             String chosenSport="";
             List<Date> chosenDates = new ArrayList<Date>();
@@ -334,6 +335,19 @@ public class AdministratorPageController {
                     chosenSport,
                     chosenDates);
 
+            textFieldFirstNameTrainer.clear();
+            textFieldLastNameTrainer.clear();
+            textFieldUsernameTrainer.clear();
+            textFieldPasswordTrainer.clear();
+            textFieldUniveristyTrainer.clear();
+
+            checkBoxFitness.setSelected(false);
+            checkBoxAerobic.setSelected(false);
+            checkBoxCulturism.setSelected(false);
+            checkBoxJogging.setSelected(false);
+            checkBoxSwimming.setSelected(false);
+            checkBoxFotbal.setSelected(false);
+
             monday_8_30_10.setSelected(false);
             tuesday_8_30_10.setSelected(false);
             wednesday_8_30_10.setSelected(false);
@@ -399,8 +413,7 @@ public class AdministratorPageController {
             participantApplication = participant.getApplications();
             if(!(participantApplication.isEmpty()))
                 for(Application application : participantApplication) {
-                        System.out.println(application.getStatus() + application.getSport());
-                        if (application.getStatus() == 2) //Accepted => Contract
+                        if (application.getStatus() == 1) //Accepted => Contract
                         {
                             applicationTable.add(application);
                         }

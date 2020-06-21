@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TrainerPageController">
+<AnchorPane fx:id="anchorPaneTrainer" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TrainerPageController">
    <children>
-      <ImageView fitHeight="336.0" fitWidth="601.0" layoutY="65.0" pickOnBounds="true">
-         <image>
-            <Image url="@Image/Sport_16.jpg" />
-         </image>
-      </ImageView>
+      <TabPane fx:id="tabPane" prefHeight="401.0" prefWidth="601.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="sportTab" text="Sport">
+            <content>
+              <AnchorPane fx:id="anchorPane2" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="imageTrainer1" fitHeight="372.0" fitWidth="649.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@Image/Sport_16.jpg" />
+                            </image>
+                            </ImageView>
+                                            <Label fx:id="monday" layoutX="233.0" layoutY="95.0" text="Monday" />
+                                            <Label fx:id="tuesday" layoutX="233.0" layoutY="125.0" text="Tuesday" />
+                                            <Label fx:id="wednesday" layoutX="233.0" layoutY="155.0" text="Wednesday" />
+                                            <Label fx:id="thursday" layoutX="233.0" layoutY="185.0" text="Thursday" />
+                                            <Label fx:id="friday" layoutX="233.0" layoutY="215.0" text="Friday" />
+
+                                            <CheckBox fx:id="monday_8_30_10" layoutX="295.0" layoutY="95.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="tuesday_8_30_10" layoutX="295.0" layoutY="125.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="wednesday_8_30_10" layoutX="295.0" layoutY="155.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="thursday_8_30_10" layoutX="295.0" layoutY="185.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="friday_8_30_10" layoutX="295.0" layoutY="215.0" mnemonicParsing="false" text="" />
+
+                                            <CheckBox fx:id="monday_10_30_12" layoutX="325.0" layoutY="95.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="tuesday_10_30_12" layoutX="325.0" layoutY="125.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="wednesday_10_30_12" layoutX="325.0" layoutY="155.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="thursday_10_30_12" layoutX="325.0" layoutY="185.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="friday_10_30_12" layoutX="325.0" layoutY="215.0" mnemonicParsing="false" text="" />
+
+                                            <CheckBox fx:id="monday_12_30_14" layoutX="355.0" layoutY="95.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="tuesday_12_30_14" layoutX="355.0" layoutY="125.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="wednesday_12_30_14" layoutX="355.0" layoutY="155.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="thursday_12_30_14" layoutX="355.0" layoutY="185.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="friday_12_30_14" layoutX="355.0" layoutY="215.0" mnemonicParsing="false" text="" />
+
+                                            <CheckBox fx:id="monday_14_30_16" layoutX="385.0" layoutY="95.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="tuesday_14_30_16" layoutX="385.0" layoutY="125.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="wednesday_14_30_16" layoutX="385.0" layoutY="155.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="thursday_14_30_16" layoutX="385.0" layoutY="185.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="friday_14_30_16" layoutX="385.0" layoutY="215.0" mnemonicParsing="false" text="" />
+
+                                            <CheckBox fx:id="monday_16_30_18" layoutX="415.0" layoutY="95.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="tuesday_16_30_18" layoutX="415.0" layoutY="125.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="wednesday_16_30_18" layoutX="415.0" layoutY="155.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="thursday_16_30_18" layoutX="415.0" layoutY="185.0" mnemonicParsing="false" text="" />
+                                            <CheckBox fx:id="friday_16_30_18" layoutX="415.0" layoutY="215.0" mnemonicParsing="false" text="" />
+                                            <Label fx:id="firstHour" layoutX="290.0" layoutY="70.0" text="8:30" />
+                                            <Label fx:id="secondHour" layoutX="320.0" layoutY="70.0" prefHeight="17.0" prefWidth="31.0" text="10:00">
+                                            </Label>
+                                            <Label fx:id="thirdHour" layoutX="350.0" layoutY="70.0" text="12:00">
+                                            </Label>
+                                            <Label fx:id="fourthHour" layoutX="380.0" layoutY="70.0" text="14:00">
+                                            </Label>
+                                            <Label fx:id="fifthHour" layoutX="410.0" layoutY="70.0" text="16:00">
+                                            </Label>
+                        <Button fx:id="updateButton" layoutX="384.0" layoutY="252.0" mnemonicParsing="false" onAction="#updateSportDates" text="Update" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="tabApplications" text="Applications">
+                <content>
+                    <AnchorPane fx:id="PaneContracts" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <BorderPane fx:id="borderPane" prefHeight="371.0" prefWidth="600.0">
+                                <top>
+                                    <TableView fx:id="tableView" prefHeight="365.0" prefWidth="599.0" BorderPane.alignment="CENTER">
+                                        <columns>
+                                            <TableColumn fx:id="participantTableColumn" prefWidth="137.0" text="Participant" />
+                                            <TableColumn fx:id="trainerTableColumn" minWidth="0.0" prefWidth="103.0" text="Trainer" />
+                                            <TableColumn fx:id="sportTableColumn" prefWidth="137.0" text="Sport" />
+                                            <TableColumn fx:id="dateTableColumn" prefWidth="106.0" text="Date" />
+                                            <TableColumn fx:id="statusTableColumn" minWidth="0.0" onEditCommit="#changeApplicationStatus" prefWidth="116.0" text="Status" />
+
+                                        </columns>
+                                    </TableView>
+                                </top></BorderPane>
+                        </children></AnchorPane>
+                </content>
+            </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

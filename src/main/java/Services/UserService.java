@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
 /* ******************************************************************
  *
  *   User Service manages the users: both participants and trainers
@@ -38,7 +37,6 @@ import java.util.Objects;
 public class UserService<JSONArray> {
 
     /*List of participants*/
-
     private static List<Participant> participants;
     private static Participant part;
 
@@ -61,7 +59,6 @@ public class UserService<JSONArray> {
     int sw;
     public static ListTrainersController ltc;
     public static ParticipantPageController ppc;
-
 
 
     /*********************************************************************************************
@@ -313,6 +310,10 @@ public class UserService<JSONArray> {
 
     public static List<Participant> getParticipants(){
         return participants;
+    }
+
+    public static List<Trainer> getTrainers() {
+        return trainers;
     }
 
     public static void injectppc(ParticipantPageController participantPageController) {

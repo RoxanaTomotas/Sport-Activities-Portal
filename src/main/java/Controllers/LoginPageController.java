@@ -16,6 +16,7 @@ import java.io.IOException;
 
 public class LoginPageController {
 
+    public static String username;
     @FXML
     private Button loginB;
     @FXML
@@ -26,7 +27,7 @@ public class LoginPageController {
     private Text text;
     @FXML
     private ChoiceBox<Object> choiceBox;
-    @FXML
+
     public void initialize() {
         choiceBox.getItems().addAll("Admin","Participant","Trainer");
         choiceBox.setValue("Admin");
@@ -47,10 +48,11 @@ public class LoginPageController {
                 else
                     throw new EmptyFieldException();
             }
-
             else
-            if(((String)choiceBox.getValue()).equals("Trainer"))
+            if(((String)choiceBox.getValue()).equals("Trainer")) {
+                username = usernameField.getText();
                 setTrainerPage();
+            }
             else {
                 setParticipantPage();
             }
